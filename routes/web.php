@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Frontend\LandingController@index');
+Route::get('family-list/{id}', 'Frontend\LandingController@familyList');
 
 
 //Route::get('/carts', function () {

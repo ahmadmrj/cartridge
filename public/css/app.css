@@ -29970,8 +29970,44 @@ a.text-dark:focus {
   background-color: #1abc9c !important;
 }
 
+.text-white {
+  color: #fff !important;
+}
+
+.text-primary {
+  color: #1abc9c !important;
+}
+
+a.text-primary:hover,
+a.text-primary:focus {
+  color: #117964 !important;
+}
+
 .text-secondary {
   color: #2c3e50 !important;
+}
+
+a.text-secondary:hover,
+a.text-secondary:focus {
+  color: #11181f !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+a.text-success:hover,
+a.text-success:focus {
+  color: #19692c !important;
+}
+
+.text-info {
+  color: #17a2b8 !important;
+}
+
+a.text-info:hover,
+a.text-info:focus {
+  color: #0f6674 !important;
 }
 
 #mainNav {
@@ -30138,5 +30174,10 @@ a.text-dark:focus {
 .btn-xl {
   padding: 1rem 1.75rem;
   font-size: 1.25rem;
+}
+
+a:hover {
+  color: #117964;
+  text-decoration: underline;
 }
 

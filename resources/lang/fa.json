@@ -1,3 +1,17 @@
 {
-    "Printer Brands": "برند پرینتر"
+    "Cartridges": "کارتریج",
+    "Printer Brands": "برند پرینتر",
+    "Printer Families": "خانواده پرینتر",
+    "Printer Models": "مدل پرینتر",
+    "printer brand": "برند پرینتر",
+    "cartridge": "کارتریج",
+    "printer model": "مدل پرینتر",
+    "printer family": "خانواده پرینتر",
+    "printer brands": "برند پرینتر",
+    "cartridges": "کارتریج ها",
+    "printer models": "مدل های پرینتر",
+    "printer families": "خانواده های پرینتر",
+    "Title": "عنوان",
+    "title": "عنوان",
+    "Picture": "تصویر"
 }

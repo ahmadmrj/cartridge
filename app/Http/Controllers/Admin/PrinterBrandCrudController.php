@@ -23,21 +23,28 @@ class PrinterBrandCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\PrinterBrand');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/printerbrand');
-        $this->crud->setEntityNameStrings('printerbrand', 'printer_brands');
+        $this->crud->setEntityNameStrings(__('printer brand'), __('printer brands'));
     }
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->addColumn(['name' => 'title', 'type' => 'text', 'label' => __('Title')]);
+        $this->crud->addColumn(['name' => 'picture', 'type' => 'image', 'label' => __('Picture')]);
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(PrinterBrandRequest::class);
 
-        // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        $this->crud->addField(['name' => 'title', 'type' => 'text', 'label' => __('Title')]);
+        $this->crud->addField([
+            'label' => __('Picture'),
+            'name' => "picture",
+            'type' => 'image',
+            'upload' => true,
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
+        ]);
     }
 
     protected function setupUpdateOperation()

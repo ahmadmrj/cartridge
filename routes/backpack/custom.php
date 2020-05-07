@@ -12,4 +12,7 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
     Route::crud('printerbrand', 'PrinterBrandCrudController');
+    Route::crud('printerfamily', 'PrinterFamilyCrudController');
+    Route::crud('printermodel', 'PrinterModelCrudController');
+    Route::crud('cartridge', 'CartridgeCrudController');
 }); // this should be the absolute last line of this file

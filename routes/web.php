@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//Route::get('/carts', function () {
+//    $asaks = DB::table('asak_carts')->get();
+//    foreach ($asaks as $asak){
+//        $printer = DB::table('printer_models')->where('title', $asak->printer)->get();
+//        $card = DB::table('cartridges')->where('title', $asak->cartridge)->get();
+//        if($printer[0]) {
+//            DB::table('printer_cartridge')->insert([
+//                'printer_id'=>$printer[0]->id,
+//                'cartridge_id'=>$card[0]->id
+//            ]);
+//        } else {
+//            echo 'err:'.$asak->printer.'<br>';
+//        }
+//    }
+//});

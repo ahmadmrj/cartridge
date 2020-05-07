@@ -90,4 +90,22 @@ class CartridgeCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+
+    protected function setupShowOperation() {
+        $this->crud->set('show.setFromDb', false);
+
+        $this->crud->addColumn('title');
+        $this->crud->addColumn('color');
+        $this->crud->addColumn('page_yield');
+        $this->crud->addColumn(['name' => 'picture', 'type' => 'image', 'label' => __('Picture')]);
+        $this->crud->addColumn([
+            // n-n relationship (with pivot table)
+            'label' => __("Printers"), // Table column heading
+            'type' => "select_multiple",
+            'name' => 'printers', // the method that defines the relationship in your Model
+            'entity' => 'printers', // the method that defines the relationship in your Model
+            'attribute' => "title", // foreign key attribute that is shown to user
+            'model' => "App\Models\PrinterModel", // foreign key model
+        ]);
+    }
 }

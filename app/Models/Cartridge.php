@@ -39,8 +39,8 @@ class Cartridge extends Model
         return $this->belongsToMany(
             'App\Models\PrinterModel',
             'printer_cartridge',
-            'printer_id',
-            'cartridge_id'
+            'cartridge_id',
+            'printer_id'
         );
     }
     /*

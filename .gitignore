@@ -1,6 +1,9 @@
 /node_modules
 /public/hot
 /public/storage
+/public/assets
+/public/images
+/public/fonts
 /storage/*.key
 /vendor
 .env
@@ -13,3 +16,5 @@ yarn-error.log
 .idea
 /public/uploads
 .DS_Store
+/resources/fonts
+

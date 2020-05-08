@@ -17,6 +17,7 @@ try {
 require('jquery-ui/ui/widgets/slider');
 require('jquery-ui/ui/widgets/autocomplete');
 // require('./jquery-ui-slider-pips.js');
+require('select2');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

@@ -13,6 +13,9 @@
     <title> کارتریج یاب </title>
 </head>
 <body id="page-top">
+    <div id="loading-div" class="stopLoading">
+        <img src="{{ \Illuminate\Support\Facades\URL::asset('/images/loading_3.gif') }}" />
+    </div>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top rtl" id="mainNav">
         <div class="container">

@@ -30683,7 +30683,7 @@ a.text-info:focus {
   color: #88d5c6;
 }
 
-.portfolio .portfolio-item {
+.cartridge .cartridge-item {
   cursor: pointer;
   position: relative;
   display: block;
@@ -30692,7 +30692,7 @@ a.text-info:focus {
   overflow: hidden;
 }
 
-.portfolio .portfolio-item .portfolio-item-caption {
+.cartridge .cartridge-item .cartridge-item-caption {
   position: absolute;
   top: 0;
   left: 0;
@@ -30701,20 +30701,20 @@ a.text-info:focus {
   background-color: rgba(26, 188, 156, 0.9);
 }
 
-.portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
+.cartridge .cartridge-item .cartridge-item-caption .cartridge-item-caption-content {
   font-size: 1.5rem;
 }
 
-.portfolio .portfolio-item .portfolio-item-caption:hover {
+.cartridge .cartridge-item .cartridge-item-caption:hover {
   opacity: 1;
 }
 
-.portfolio-modal .portfolio-modal-title {
+.cartridge-modal .cartridge-modal-title {
   font-size: 2.25rem;
   line-height: 2rem;
 }
 
-.portfolio-modal .close {
+.cartridge-modal .close {
   position: absolute;
   z-index: 1;
   right: 1.5rem;
@@ -30726,7 +30726,7 @@ a.text-info:focus {
 }
 
 @media (min-width: 992px) {
-  .portfolio-modal .portfolio-modal-title {
+  .cartridge-modal .cartridge-modal-title {
     font-size: 3rem;
     line-height: 2.5rem;
   }

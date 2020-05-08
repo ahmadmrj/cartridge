@@ -5,6 +5,25 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\PrinterFamily
+ *
+ * @property int $id
+ * @property int $brand_id
+ * @property string $title
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\models\PrinterBrand $brand
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PrinterFamily newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PrinterFamily newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PrinterFamily query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PrinterFamily whereBrandId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PrinterFamily whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PrinterFamily whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PrinterFamily whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PrinterFamily whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class PrinterFamily extends Model
 {
     use CrudTrait;

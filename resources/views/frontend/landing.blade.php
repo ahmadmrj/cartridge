@@ -70,11 +70,11 @@
                 },'json')
             });
 
-            // $('#printer-model').change(function () {
-            //     $('html, body').animate({
-            //         scrollTop: $("#div1").offset().top
-            //     }, 2000);
-            // });
+            $('#printer-model').change(function () {
+                $('html, body').animate({
+                    scrollTop: $("#cartridge").offset().top
+                }, 2000);
+            });
         });
     </script>
 @endsection

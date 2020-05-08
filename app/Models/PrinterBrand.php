@@ -6,6 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Support\Str;
 
+/**
+ * App\models\PrinterBrand
+ *
+ * @property int $id
+ * @property string $title
+ * @property string|null $picture
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\models\PrinterBrand newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\models\PrinterBrand newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\models\PrinterBrand query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\models\PrinterBrand whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\models\PrinterBrand whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\models\PrinterBrand wherePicture($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\models\PrinterBrand whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\models\PrinterBrand whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class PrinterBrand extends Model
 {
     use CrudTrait;

@@ -78,33 +78,33 @@ a.text-info:hover, a.text-info:focus {
     color: #88d5c6;
 }
 
-.portfolio {
-    .portfolio-item {
+.cartridge {
+    .cartridge-item {
         cursor: pointer;
         position: relative;
         display: block;
         max-width: 25rem;
         border-radius: 0.5rem;
         overflow: hidden;
-        .portfolio-item-caption {
+        .cartridge-item-caption {
             position: absolute;
             top: 0;
             left: 0;
             transition: all 0.2s ease-in-out;
             opacity: 0;
             background-color: rgba(26, 188, 156, 0.9);
-            .portfolio-item-caption-content {
+            .cartridge-item-caption-content {
                 font-size: 1.5rem;
             }
         }
-        .portfolio-item-caption:hover {
+        .cartridge-item-caption:hover {
             opacity: 1;
         }
     }
 }
 
-.portfolio-modal{
-    .portfolio-modal-title {
+.cartridge-modal{
+    .cartridge-modal-title {
         font-size: 2.25rem;
         line-height: 2rem;
     }
@@ -120,7 +120,7 @@ a.text-info:hover, a.text-info:focus {
     }
 }
 @media (min-width: 992px) {
-    .portfolio-modal .portfolio-modal-title {
+    .cartridge-modal .cartridge-modal-title {
         font-size: 3rem;
         line-height: 2.5rem;
     }

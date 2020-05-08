@@ -25,7 +25,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">آساک سیستم</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#cartridge">آساک سیستم</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">درباره ما</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">تماس</a></li>
                 </ul>
@@ -38,71 +38,71 @@
             @yield('master-head')
         </div>
     </header>
-    <!-- Portfolio Section-->
-    <section class="page-section portfolio" id="portfolio">
+    <!-- cartridge Section-->
+    <section class="page-section cartridge" id="cartridge">
     <div class="container">
-        <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+        <!-- cartridge Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">کارتریج ها</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
-        <!-- Portfolio Grid Items-->
+        <!-- cartridge Grid Items-->
         <div class="row">
-            <!-- Portfolio Item 1-->
+            <!-- cartridge Item 1-->
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal1">
+                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="" />
+                    <img class="img-fluid" src="assets/img/cartridge/cabin.png" alt="" />
                 </div>
             </div>
-            <!-- Portfolio Item 2-->
+            <!-- cartridge Item 2-->
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal2">
+                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="" />
+                    <img class="img-fluid" src="assets/img/cartridge/cake.png" alt="" />
                 </div>
             </div>
-            <!-- Portfolio Item 3-->
+            <!-- cartridge Item 3-->
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal3">
+                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="" />
+                    <img class="img-fluid" src="assets/img/cartridge/circus.png" alt="" />
                 </div>
             </div>
-            <!-- Portfolio Item 4-->
+            <!-- cartridge Item 4-->
             <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal4">
+                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/game.png" alt="" />
+                    <img class="img-fluid" src="assets/img/cartridge/game.png" alt="" />
                 </div>
             </div>
-            <!-- Portfolio Item 5-->
+            <!-- cartridge Item 5-->
             <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal5">
+                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="" />
+                    <img class="img-fluid" src="assets/img/cartridge/safe.png" alt="" />
                 </div>
             </div>
-            <!-- Portfolio Item 6-->
+            <!-- cartridge Item 6-->
             <div class="col-md-6 col-lg-4">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal6">
+                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="" />
+                    <img class="img-fluid" src="assets/img/cartridge/submarine.png" alt="" />
                 </div>
             </div>
         </div>
@@ -161,8 +161,8 @@
     <div class="scroll-to-top d-lg-none position-fixed">
     <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
 </div>
-    <!-- Portfolio Modals--><!-- Portfolio Modal 1-->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+    <!-- cartridge Modals--><!-- cartridge Modal 1-->
+    <div class="cartridge-modal modal fade" id="cartridgeModal1" tabindex="-1" role="dialog" aria-labelledby="cartridgeModal1Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -172,15 +172,15 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
+                            <!-- cartridge Modal - Title-->
+                            <h2 class="cartridge-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
                                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                 <div class="divider-custom-line"></div>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/portfolio/cabin.png" alt="" /><!-- Portfolio Modal - Text-->
+                            <!-- cartridge Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/cartridge/cabin.png" alt="" /><!-- cartridge Modal - Text-->
                             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                             <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>
@@ -190,8 +190,8 @@
         </div>
     </div>
 </div>
-    <!-- Portfolio Modal 2-->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+    <!-- cartridge Modal 2-->
+    <div class="cartridge-modal modal fade" id="cartridgeModal2" tabindex="-1" role="dialog" aria-labelledby="cartridgeModal2Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -201,15 +201,15 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
+                            <!-- cartridge Modal - Title-->
+                            <h2 class="cartridge-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
                                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                 <div class="divider-custom-line"></div>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="" /><!-- Portfolio Modal - Text-->
+                            <!-- cartridge Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/cartridge/cake.png" alt="" /><!-- cartridge Modal - Text-->
                             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                             <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>
@@ -219,8 +219,8 @@
         </div>
     </div>
 </div>
-    <!-- Portfolio Modal 3-->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
+    <!-- cartridge Modal 3-->
+    <div class="cartridge-modal modal fade" id="cartridgeModal3" tabindex="-1" role="dialog" aria-labelledby="cartridgeModal3Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -230,15 +230,15 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
+                            <!-- cartridge Modal - Title-->
+                            <h2 class="cartridge-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
                                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                 <div class="divider-custom-line"></div>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="" /><!-- Portfolio Modal - Text-->
+                            <!-- cartridge Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/cartridge/circus.png" alt="" /><!-- cartridge Modal - Text-->
                             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                             <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>
@@ -248,8 +248,8 @@
         </div>
     </div>
 </div>
-    <!-- Portfolio Modal 4-->
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-labelledby="portfolioModal4Label" aria-hidden="true">
+    <!-- cartridge Modal 4-->
+    <div class="cartridge-modal modal fade" id="cartridgeModal4" tabindex="-1" role="dialog" aria-labelledby="cartridgeModal4Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -259,15 +259,15 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
+                            <!-- cartridge Modal - Title-->
+                            <h2 class="cartridge-modal-title text-secondary text-uppercase mb-0">Controller</h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
                                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                 <div class="divider-custom-line"></div>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="" /><!-- Portfolio Modal - Text-->
+                            <!-- cartridge Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/cartridge/game.png" alt="" /><!-- cartridge Modal - Text-->
                             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                             <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>
@@ -277,8 +277,8 @@
         </div>
     </div>
 </div>
-    <!-- Portfolio Modal 5-->
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-labelledby="portfolioModal5Label" aria-hidden="true">
+    <!-- cartridge Modal 5-->
+    <div class="cartridge-modal modal fade" id="cartridgeModal5" tabindex="-1" role="dialog" aria-labelledby="cartridgeModal5Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -288,15 +288,15 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
+                            <!-- cartridge Modal - Title-->
+                            <h2 class="cartridge-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
                                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                 <div class="divider-custom-line"></div>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/portfolio/safe.png" alt="" /><!-- Portfolio Modal - Text-->
+                            <!-- cartridge Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/cartridge/safe.png" alt="" /><!-- cartridge Modal - Text-->
                             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                             <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>
@@ -306,8 +306,8 @@
         </div>
     </div>
 </div>
-    <!-- Portfolio Modal 6-->
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-labelledby="portfolioModal6Label" aria-hidden="true">
+    <!-- cartridge Modal 6-->
+    <div class="cartridge-modal modal fade" id="cartridgeModal6" tabindex="-1" role="dialog" aria-labelledby="cartridgeModal6Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -317,15 +317,15 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
+                            <!-- cartridge Modal - Title-->
+                            <h2 class="cartridge-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
                                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                 <div class="divider-custom-line"></div>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png" alt="" /><!-- Portfolio Modal - Text-->
+                            <!-- cartridge Modal - Image--><img class="img-fluid rounded mb-5" src="assets/img/cartridge/submarine.png" alt="" /><!-- cartridge Modal - Text-->
                             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                             <button class="btn btn-primary" href="#" data-dismiss="modal"><i class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>

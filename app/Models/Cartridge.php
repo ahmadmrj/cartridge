@@ -6,6 +6,32 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+/**
+ * App\Models\Cartridge
+ *
+ * @property int $id
+ * @property string $title
+ * @property int $page_yield
+ * @property string $color
+ * @property string|null $buy_link
+ * @property string $picture
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PrinterModel[] $printers
+ * @property-read int|null $printers_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereBuyLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge wherePageYield($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge wherePicture($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Cartridge extends Model
 {
     use CrudTrait;

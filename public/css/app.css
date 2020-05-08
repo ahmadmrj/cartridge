@@ -30686,8 +30686,11 @@ a.text-info:focus {
 .cartridge .cartridge-item {
   cursor: pointer;
   position: relative;
-  display: block;
-  max-width: 25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   border-radius: 0.5rem;
   overflow: hidden;
 }
@@ -30707,6 +30710,10 @@ a.text-info:focus {
 
 .cartridge .cartridge-item .cartridge-item-caption:hover {
   opacity: 1;
+}
+
+.cartridge .cartridge-item h5 {
+  text-align: center;
 }
 
 .cartridge-modal .cartridge-modal-title {

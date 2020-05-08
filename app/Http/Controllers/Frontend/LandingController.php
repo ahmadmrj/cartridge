@@ -31,4 +31,13 @@ class LandingController extends Controller
 
         return json_encode($models);
     }
+
+    public function cartridgeList($id) {
+        $carts = Cartridge::select('title', \DB::raw('IF(picture is null, "/images/no_img.png", picture) as picture'))
+            ->whereHas('printers', function ($sql) use($id){
+            $sql->where('printer_id', $id);
+        })->get();
+
+        return json_encode($carts);
+    }
 }

@@ -50,7 +50,7 @@
             <div class="divider-custom-line"></div>
         </div>
         <!-- cartridge Grid Items-->
-        <div class="row rtl">
+        <div class="row rtl" id="cartridge-grid-items">
             <!-- cartridge Item 1-->
             @yield('cartridge-items')
         </div>

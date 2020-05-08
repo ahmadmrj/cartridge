@@ -13,7 +13,9 @@ class LandingController extends Controller
 {
     public function index() {
         $brands = PrinterBrand::all();
-        $cartridges = Cartridge::whereNotNull('buy_link')->limit(10);
+        $cartridges = Cartridge::whereNotNull(['buy_link', 'picture'])
+            ->limit(8)
+            ->get();
 
         return view('frontend.landing', compact('brands', 'cartridges'));
     }

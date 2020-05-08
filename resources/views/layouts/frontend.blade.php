@@ -50,61 +50,9 @@
             <div class="divider-custom-line"></div>
         </div>
         <!-- cartridge Grid Items-->
-        <div class="row">
+        <div class="row rtl">
             <!-- cartridge Item 1-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal1">
-                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/cartridge/cabin.png" alt="" />
-                </div>
-            </div>
-            <!-- cartridge Item 2-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal2">
-                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/cartridge/cake.png" alt="" />
-                </div>
-            </div>
-            <!-- cartridge Item 3-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal3">
-                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/cartridge/circus.png" alt="" />
-                </div>
-            </div>
-            <!-- cartridge Item 4-->
-            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal4">
-                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/cartridge/game.png" alt="" />
-                </div>
-            </div>
-            <!-- cartridge Item 5-->
-            <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal5">
-                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/cartridge/safe.png" alt="" />
-                </div>
-            </div>
-            <!-- cartridge Item 6-->
-            <div class="col-md-6 col-lg-4">
-                <div class="cartridge-item mx-auto" data-toggle="modal" data-target="#cartridgeModal6">
-                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/cartridge/submarine.png" alt="" />
-                </div>
-            </div>
+            @yield('cartridge-items')
         </div>
     </div>
 </section>

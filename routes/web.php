@@ -20,7 +20,7 @@ Route::get('model-list/{id}', 'Frontend\LandingController@modelList');
 
 
 //Route::get('/carts', function () {
-//    $asaks = DB::table('asak_carts')->get();
+//    $asaks = DB::table('temp')->get();
 //    foreach ($asaks as $asak){
 //        $printer = DB::table('printer_models')->where('title', $asak->printer)->get();
 //        $card = DB::table('cartridges')->where('title', $asak->cartridge)->get();
@@ -34,3 +34,14 @@ Route::get('model-list/{id}', 'Frontend\LandingController@modelList');
 //        }
 //    }
 //});
+
+//Route::get('/refines', function () {
+//    $carts = DB::table('cartridges')->get();
+//    foreach ($carts as $cart){
+//        if(!file_exists($cart->picture)){
+//            echo $cart->picture.'<br>';
+//            DB::table('cartridges')->where('id', $cart->id)->update(['picture' => null]);
+//        }
+//    }
+//});
+

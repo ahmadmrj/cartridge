@@ -35,6 +35,28 @@
         </div>
     </form>
 @endsection
+
+@section('cartridge-items')
+    @foreach($cartridges as $cartridge)
+        <div class="col-md-4 col-lg-3 mb-5">
+            <div class="card h-100">
+                <div class="cartridge-item mx-auto h-100" data-toggle="modal" data-target="#cartridgeModal1">
+                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="cartridge-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    @if(file_exists($cartridge->picture))
+                        <img class="img-fluid" src="{{ URL::asset($cartridge->picture) }}" alt="" />
+                    @else
+                        <img class="img-fluid" src="{{ URL::asset('/images/no_img.png') }}" alt="" />
+                    @endif
+
+                    <h5 class="card-title text-center">{{$cartridge->title}}</h5>
+                </div>
+            </div>
+        </div>
+    @endforeach
+@endsection
+
 @section('scripts')
     <script>
         $(document).ready(function () {

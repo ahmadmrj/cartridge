@@ -18,8 +18,8 @@ class CreateCartridge extends Migration
             $table->string('title');
             $table->integer('page_yield');
             $table->string('color');
-            $table->text('buy_link');
-            $table->string('picture');
+            $table->text('buy_link')->nullable();
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }

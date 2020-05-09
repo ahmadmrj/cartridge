@@ -40,7 +40,12 @@
     @foreach($cartridges as $cartridge)
         <div class="col-md-4 col-lg-3 mb-5">
             <div class="card h-100">
-                <div class="cartridge-item" data-toggle="modal" data-target="#cartridgeModal1">
+                <div class="cartridge-item" data-toggle="modal" data-target="#cartridgeModal"
+                     data-label="{{$cartridge->title}}"
+                     data-color="{{$cartridge->color}}"
+                     data-page="{{$cartridge->page_yield}}"
+                     data-picture="{{$cartridge->picture}}"
+                >
                     <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="cartridge-item-caption-content text-center text-white">
                             <i class="fas fa-eye fa-3x"></i>
@@ -57,6 +62,44 @@
             </div>
         </div>
     @endforeach
+@endsection
+
+@section('modal')
+    <div class="cartridge-modal modal fade rtl" id="cartridgeModal" tabindex="-1" role="dialog" aria-labelledby="cartridgeModal1Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                </button>
+                <div class="modal-body text-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <!-- cartridge Modal - Title-->
+                                <h5 class="cartridge-modal-title text-secondary mb-0">
+                                </h5>
+                                <!-- Icon Divider-->
+                                <div class="divider-custom">
+                                    <div class="divider-custom-line"></div>
+                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                    <div class="divider-custom-line"></div>
+                                </div>
+                                <!-- cartridge Modal - Image-->
+                                <img class="img-fluid rounded mb-1" src="" alt="" /><!-- cartridge Modal - Text-->
+                                <p class="text-left">
+                                    <strong>رنگ: </strong> <span id="modal-cartridge-color"></span><br>
+                                    <strong>تعداد صفحه: </strong> <span id="modal-cartridge-page"></span>
+                                </p>
+                                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                                    <i class="fas fa-times fa-fw"></i> بستن
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -118,6 +161,21 @@
                     scrollTop: $("#cartridge").offset().top
                 }, 2000);
             });
+
+            $('#cartridgeModal').on('show.bs.modal', function (event) {
+                let button = $(event.relatedTarget); // Button that triggered the modal
+                let label = button.data('label'); // Extract info from data-* attributes
+                let picture = button.data('picture');
+                let color = button.data('color');
+                let page = button.data('page');
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this);
+                modal.find('.cartridge-modal-title').text(label);
+                modal.find('#modal-cartridge-color').text(color);
+                modal.find('#modal-cartridge-page').text(page);
+                modal.find('.img-fluid').attr('src',picture);
+            })
         });
     </script>
 @endsection

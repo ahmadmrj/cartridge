@@ -111,7 +111,6 @@ a.text-info:hover, a.text-info:focus {
 
 .cartridge-modal{
     .cartridge-modal-title {
-        font-size: 2.25rem;
         line-height: 2rem;
     }
     .close {
@@ -127,7 +126,7 @@ a.text-info:hover, a.text-info:focus {
 }
 @media (min-width: 992px) {
     .cartridge-modal .cartridge-modal-title {
-        font-size: 3rem;
+        font-size: 1.5rem;
         line-height: 2.5rem;
     }
 }

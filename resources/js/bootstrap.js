@@ -14,9 +14,7 @@ try {
     require('bootstrap');
 } catch (e) {}
 
-require('jquery-ui/ui/widgets/slider');
-require('jquery-ui/ui/widgets/autocomplete');
-// require('./jquery-ui-slider-pips.js');
+require('jquery.easing');
 require('select2');
 
 /**

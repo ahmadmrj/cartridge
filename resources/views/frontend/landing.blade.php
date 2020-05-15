@@ -1,105 +1,88 @@
 @extends('layouts.frontend')
 
 @section('master-head')
-    <!-- Masthead Avatar Image-->
-    <img class="masthead-avatar mb-3" src="assets/img/tools-and-utensils.svg" alt="" />
-    <!-- Masthead Heading-->
-    <h4 class="masthead-heading mb-2">برای شروع، مدل پرینتر خودتون رو جستجو کنید...</h4>
-    <!-- Icon Divider-->
-    <div class="divider-custom divider-light">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
-    </div>
-    <form class="w-100">
-        <div class="form-row">
-            <div class="form-group col-md-4 text-left">
-                <label for="step_1" class="text-bold text-light">۱. برند</label>
-                <select class="form-control" id="brand-select">
-                    <option value="" selected disabled>لطفا انتخاب کنید...</option>
-                    @foreach($brands as $brand)
-                        <option value="{{ $brand->id }}">{{ $brand->title }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group col-md-4 text-left">
-                <label for="step_2" class="text-inactive" id="family-label">۲. خانواده پرینتر</label>
-                <select class="form-control" id="printer-family" name="printer_family">
-                </select>
-            </div>
-            <div class="form-group col-md-4 text-left">
-                <label for="step_3" class="text-inactive" id="model-label">۳. مدل پرینتر</label>
-                <select class="form-control" id="printer-model" name="printer_model">
-                </select>
-            </div>
+    <header class="masthead bg-primary text-white text-center rtl">
+        <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-3" src="assets/img/tools-and-utensils.svg" alt="" />
+        <!-- Masthead Heading-->
+        <h4 class="masthead-heading mb-2">برای شروع، مدل پرینتر خودتون رو جستجو کنید...</h4>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
         </div>
-    </form>
+        <form class="w-100">
+            <div class="form-row">
+                <div class="form-group col-md-4 text-left">
+                    <label for="step_1" class="text-bold text-light">۱. برند</label>
+                    <select class="form-control" id="brand-select">
+                        <option value="" selected disabled>لطفا انتخاب کنید...</option>
+                        @foreach($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-4 text-left">
+                    <label for="step_2" class="text-inactive" id="family-label">۲. خانواده پرینتر</label>
+                    <select class="form-control" id="printer-family" name="printer_family">
+                    </select>
+                </div>
+                <div class="form-group col-md-4 text-left">
+                    <label for="step_3" class="text-inactive" id="model-label">۳. مدل پرینتر</label>
+                    <select class="form-control" id="printer-model" name="printer_model">
+                    </select>
+                </div>
+            </div>
+        </form>
+        </div>
+    </header>
 @endsection
 
 @section('cartridge-items')
-    @foreach($cartridges as $cartridge)
-        <div class="col-md-4 col-lg-3 mb-5">
-            <div class="card h-100">
-                <div class="cartridge-item" data-toggle="modal" data-target="#cartridgeModal"
-                     data-label="{{$cartridge->title}}"
-                     data-color="{{$cartridge->color}}"
-                     data-page="{{$cartridge->page_yield}}"
-                     data-picture="{{$cartridge->picture}}"
-                >
-                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="cartridge-item-caption-content text-center text-white">
-                            <i class="fas fa-eye fa-3x"></i>
-                        </div>
-                    </div>
-                    @if(file_exists($cartridge->picture))
-                        <img class="img-fluid" src="{{ URL::asset($cartridge->picture) }}" alt="" />
-                    @else
-                        <img class="img-fluid" src="{{ URL::asset('/images/no_img.png') }}" alt="" />
-                    @endif
-
-                    <h5>{{$cartridge->title}}</h5>
-                </div>
+    <section class="page-section cartridge" id="cartridge">
+        <div class="container">
+            <!-- cartridge Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">کارتریج ها</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
             </div>
-        </div>
-    @endforeach
-@endsection
-
-@section('modal')
-    <div class="cartridge-modal modal fade rtl" id="cartridgeModal" tabindex="-1" role="dialog" aria-labelledby="cartridgeModal1Label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                </button>
-                <div class="modal-body text-center">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- cartridge Modal - Title-->
-                                <h5 class="cartridge-modal-title text-secondary mb-0">
-                                </h5>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
+            <!-- cartridge Grid Items-->
+            <div class="row rtl" id="cartridge-grid-items">
+            @foreach($cartridges as $cartridge)
+                <div class="col-md-4 col-lg-3 mb-5">
+                    <div class="card h-100">
+                        <a href="{{ URL::to('/cartridge/'.str_slug($cartridge->title)) }}">
+                            <div class="cartridge-item"
+                                 data-label="{{$cartridge->title}}"
+                                 data-color="{{$cartridge->color}}"
+                                 data-page="{{$cartridge->page_yield}}"
+                                 data-picture="{{$cartridge->picture}}"
+                            >
+                                <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="cartridge-item-caption-content text-center text-white">
+                                        <i class="fas fa-eye fa-3x"></i>
+                                    </div>
                                 </div>
-                                <!-- cartridge Modal - Image-->
-                                <img class="img-fluid rounded mb-1" src="" alt="" /><!-- cartridge Modal - Text-->
-                                <p class="text-left">
-                                    <strong>رنگ: </strong> <span id="modal-cartridge-color"></span><br>
-                                    <strong>تعداد صفحه: </strong> <span id="modal-cartridge-page"></span>
-                                </p>
-                                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                                    <i class="fas fa-times fa-fw"></i> بستن
-                                </button>
+                                @if(file_exists($cartridge->picture))
+                                    <img class="img-fluid" src="{{ URL::asset($cartridge->picture) }}" alt="" />
+                                @else
+                                    <img class="img-fluid" src="{{ URL::asset('/images/no_img.png') }}" alt="" />
+                                @endif
+
+                                <h5>{{$cartridge->title}}</h5>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
+            @endforeach
             </div>
         </div>
-    </div>
+    </section>
 @endsection
 
 @section('scripts')
@@ -166,21 +149,6 @@
                     scrollTop: $("#cartridge").offset().top
                 }, 2000);
             });
-
-            $('#cartridgeModal').on('show.bs.modal', function (event) {
-                let button = $(event.relatedTarget); // Button that triggered the modal
-                let label = button.data('label'); // Extract info from data-* attributes
-                let picture = button.data('picture');
-                let color = button.data('color');
-                let page = button.data('page');
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this);
-                modal.find('.cartridge-modal-title').text(label);
-                modal.find('#modal-cartridge-color').text(color);
-                modal.find('#modal-cartridge-page').text(page);
-                modal.find('.img-fluid').attr('src',picture);
-            })
         });
     </script>
 @endsection

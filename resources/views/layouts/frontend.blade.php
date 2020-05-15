@@ -19,7 +19,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top rtl" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">کارتریج یاب</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ URL::to('/') }}">کارتریج یاب</a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 منو  <i class="fas fa-bars"></i>
             </button>
@@ -33,29 +33,11 @@
         </div>
     </nav>
     <!-- Masthead-->
-    <header class="masthead bg-primary text-white text-center rtl">
-        <div class="container d-flex align-items-center flex-column">
-            @yield('master-head')
-        </div>
-    </header>
+    @yield('master-head')
+
     <!-- cartridge Section-->
-    <section class="page-section cartridge" id="cartridge">
-    <div class="container">
-        <!-- cartridge Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">کارتریج ها</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- cartridge Grid Items-->
-        <div class="row rtl" id="cartridge-grid-items">
-            <!-- cartridge Item 1-->
-            @yield('cartridge-items')
-        </div>
-    </div>
-</section>
+    @yield('cartridge-items')
+
     <!-- About Section-->
     <section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container rtl">

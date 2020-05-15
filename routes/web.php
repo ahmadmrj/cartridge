@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Frontend\LandingController@index');
 Route::get('family-list/{id}', 'Frontend\LandingController@familyList');
 Route::get('model-list/{id}', 'Frontend\LandingController@modelList');
+Route::get('cartridge/{title}', 'Frontend\CartridgeController@view');
 Route::get('cartridge-list/{id}', 'Frontend\LandingController@cartridgeList');
 
 
@@ -46,9 +47,17 @@ Route::get('cartridge-list/{id}', 'Frontend\LandingController@cartridgeList');
 //    }
 //});
 
-Route::get('/usr', function () {
-    $usr = \App\User::where('id', 1)->first();
-    $usr->password = Hash::make('123456');
-    $usr->save();
-    echo $usr->password;
-});
+//Route::get('/usr', function () {
+//    $usr = \App\User::where('id', 1)->first();
+//    $usr->password = Hash::make('123456');
+//    $usr->save();
+//    echo $usr->password;
+//});
+
+//Route::get('/slg', function () {
+//    $cart = \App\Models\Cartridge::all();
+//    foreach ($cart as $val) {
+//        $val->slug = str_slug($val->title);
+//        $val->save();
+//    }
+//});

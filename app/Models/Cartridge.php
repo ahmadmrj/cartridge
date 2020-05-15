@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
  * @property string $color
  * @property string|null $buy_link
  * @property string $picture
+ * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PrinterModel[] $printers
@@ -29,6 +30,7 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge wherePageYield($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge wherePicture($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Cartridge whereUpdatedAt($value)
  * @mixin \Eloquent
  */
@@ -46,7 +48,7 @@ class Cartridge extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-     protected $fillable = ['title', 'color', 'page_yield', 'buy_link', 'picture'];
+     protected $fillable = ['title', 'color', 'page_yield', 'buy_link', 'picture', 'slug'];
     // protected $hidden = [];
     // protected $dates = [];
 

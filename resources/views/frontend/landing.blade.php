@@ -143,7 +143,12 @@
                     $.each(data, function (key, value) {
                         hbody += '<div class="col-md-4 col-lg-3 mb-5">' +
                             '            <div class="card h-100">' +
-                            '                <div class="cartridge-item" data-toggle="modal" data-target="#cartridgeModal1">' +
+                            '                <div class="cartridge-item" data-toggle="modal" data-target="#cartridgeModal"' +
+                            '                        data-label="'+value.title+'"'+
+                            '                        data-color="'+value.color+'"'+
+                            '                        data-page="'+value.page_yield+'"'+
+                            '                        data-picture="'+value.picture+'"'+
+                            '                 >' +
                             '                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">' +
                             '                        <div class="cartridge-item-caption-content text-center text-white">' +
                             '                            <i class="fas fa-eye fa-3x"></i>' +

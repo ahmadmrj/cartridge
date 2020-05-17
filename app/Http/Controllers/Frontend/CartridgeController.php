@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CartridgeController extends Controller
 {
     public function view($title) {
-        $cartridge = Cartridge::whereSlug($title)->firstOrFail();
+        $cartridge = Cartridge::with('printers.family.brand')->whereSlug($title)->firstOrFail();
 
         return view('frontend.cartridge_view', compact('cartridge'));
     }

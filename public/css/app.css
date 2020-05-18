@@ -30691,10 +30691,10 @@ a.text-info:focus {
   max-width: 900px;
 }
 
-.cartridge .cartridge-item {
+.cartridge-item {
   cursor: pointer;
   position: relative;
-  height: 100%;
+  height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30703,7 +30703,7 @@ a.text-info:focus {
   overflow: hidden;
 }
 
-.cartridge .cartridge-item .cartridge-item-caption {
+.cartridge-item .cartridge-item-caption {
   position: absolute;
   top: 0;
   left: 0;
@@ -30712,16 +30712,20 @@ a.text-info:focus {
   background-color: rgba(26, 188, 156, 0.9);
 }
 
-.cartridge .cartridge-item .cartridge-item-caption .cartridge-item-caption-content {
+.cartridge-item .cartridge-item-caption .cartridge-item-caption-content {
   font-size: 1.5rem;
 }
 
-.cartridge .cartridge-item .cartridge-item-caption:hover {
+.cartridge-item .cartridge-item-caption:hover {
   opacity: 1;
 }
 
-.cartridge .cartridge-item h5 {
+.cartridge-item h5 {
   text-align: center;
+}
+
+.cartridge-item img {
+  padding-top: 20px;
 }
 
 .cartridge-modal .cartridge-modal-title {

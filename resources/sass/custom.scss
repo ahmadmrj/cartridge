@@ -86,34 +86,35 @@ a.text-info:hover, a.text-info:focus {
     max-width: 900px;
 }
 
-.cartridge {
-    .cartridge-item {
-        cursor: pointer;
-        position: relative;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 0.5rem;
-        overflow: hidden;
-        .cartridge-item-caption {
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: all 0.2s ease-in-out;
-            opacity: 0;
-            background-color: rgba(26, 188, 156, 0.9);
-            .cartridge-item-caption-content {
-                font-size: 1.5rem;
-            }
+.cartridge-item {
+    cursor: pointer;
+    position: relative;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    .cartridge-item-caption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.2s ease-in-out;
+        opacity: 0;
+        background-color: rgba(26, 188, 156, 0.9);
+        .cartridge-item-caption-content {
+            font-size: 1.5rem;
         }
-        .cartridge-item-caption:hover {
-            opacity: 1;
-        }
-        h5{
-            text-align: center;
-        }
+    }
+    .cartridge-item-caption:hover {
+        opacity: 1;
+    }
+    h5{
+        text-align: center;
+    }
+    img{
+        padding-top: 20px;
     }
 }
 

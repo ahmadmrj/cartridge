@@ -11,7 +11,11 @@
         </nav>
         <div class="row">
             <div class="col-md-5">
-                <img class="img-fluid rounded img-thumbnail" width="100%" src="{{ URL::asset($cartridge->picture) }}">
+                @if(file_exists($cartridge->picture))
+                    <img class="img-fluid rounded img-thumbnail" width="100%" src="{{ URL::asset($cartridge->picture) }}">
+                @else
+                    <img class="img-fluid  rounded img-thumbnail" width="100%" src="{{ URL::asset('/images/no_img.png') }}">
+                @endif
                 @if($cartridge->buy_link)
                     <a target="_blank" href="{{ $cartridge->buy_link }}" class="btn btn-success mt-2 w-100">
                         <i class="fa fa-shopping-cart"></i>
@@ -31,7 +35,7 @@
                 <div class="text-bold"> پرینترهای سازگار: </div>
                 <ul>
                     @foreach($cartridge->printers as $printer)
-                        <li> {{ $printer->title }} </li>
+                        <li><a href="{{ URL::to('/cartridges?printer='.str_slug($printer->title)) }}"> {{ $printer->title }} </a></li>
                     @endforeach
                 </ul>
             </div>

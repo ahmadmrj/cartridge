@@ -54,31 +54,7 @@
             <!-- cartridge Grid Items-->
             <div class="row rtl" id="cartridge-grid-items">
             @foreach($cartridges as $cartridge)
-                <div class="col-md-4 col-lg-3 mb-5">
-                    <div class="card h-100">
-                        <a href="{{ URL::to('/cartridge/'.str_slug($cartridge->title)) }}">
-                            <div class="cartridge-item"
-                                 data-label="{{$cartridge->title}}"
-                                 data-color="{{$cartridge->color}}"
-                                 data-page="{{$cartridge->page_yield}}"
-                                 data-picture="{{$cartridge->picture}}"
-                            >
-                                <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="cartridge-item-caption-content text-center text-white">
-                                        <i class="fas fa-eye fa-3x"></i>
-                                    </div>
-                                </div>
-                                @if(file_exists($cartridge->picture))
-                                    <img class="img-fluid" src="{{ URL::asset($cartridge->picture) }}" alt="" />
-                                @else
-                                    <img class="img-fluid" src="{{ URL::asset('/images/no_img.png') }}" alt="" />
-                                @endif
-
-                                <h5>{{$cartridge->title}}</h5>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <x-cartridge :cartData="$cartridge" />
             @endforeach
             </div>
         </div>
@@ -126,12 +102,8 @@
                     $.each(data, function (key, value) {
                         hbody += '<div class="col-md-4 col-lg-3 mb-5">' +
                             '            <div class="card h-100">' +
-                            '                <div class="cartridge-item" data-toggle="modal" data-target="#cartridgeModal"' +
-                            '                        data-label="'+value.title+'"'+
-                            '                        data-color="'+value.color+'"'+
-                            '                        data-page="'+value.page_yield+'"'+
-                            '                        data-picture="'+value.picture+'"'+
-                            '                 >' +
+                            '               <a href="/cartridge/' + value.slug + '">' +
+                            '                <div class="cartridge-item">' +
                             '                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">' +
                             '                        <div class="cartridge-item-caption-content text-center text-white">' +
                             '                            <i class="fas fa-eye fa-3x"></i>' +

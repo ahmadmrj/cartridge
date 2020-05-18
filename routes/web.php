@@ -18,6 +18,7 @@ Route::get('/', 'Frontend\LandingController@index');
 Route::get('family-list/{id}', 'Frontend\LandingController@familyList');
 Route::get('model-list/{id}', 'Frontend\LandingController@modelList');
 Route::get('cartridge/{title}', 'Frontend\CartridgeController@view');
+Route::get('cartridges', 'Frontend\CartridgeController@index');
 Route::get('cartridge-list/{id}', 'Frontend\LandingController@cartridgeList');
 
 
@@ -55,7 +56,7 @@ Route::get('cartridge-list/{id}', 'Frontend\LandingController@cartridgeList');
 //});
 
 //Route::get('/slg', function () {
-//    $cart = \App\Models\Cartridge::all();
+//    $cart = \App\Models\PrinterModel::all();
 //    foreach ($cart as $val) {
 //        $val->slug = str_slug($val->title);
 //        $val->save();

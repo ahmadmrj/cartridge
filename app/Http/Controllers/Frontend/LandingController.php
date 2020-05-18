@@ -37,7 +37,8 @@ class LandingController extends Controller
                 'title',
                 \DB::raw('IF(picture is null, "/images/no_img.png", picture) as picture'),
                 'color',
-                'page_yield'
+                'page_yield',
+                'slug'
             )
             ->whereHas('printers', function ($sql) use($id){
             $sql->where('printer_id', $id);

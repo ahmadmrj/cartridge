@@ -56,7 +56,7 @@ Route::get('cartridge-list/{id}', 'Frontend\LandingController@cartridgeList');
 //});
 
 //Route::get('/slg', function () {
-//    $cart = \App\Models\PrinterModel::all();
+//    $cart = \App\Models\PrinterBrand::all();
 //    foreach ($cart as $val) {
 //        $val->slug = str_slug($val->title);
 //        $val->save();

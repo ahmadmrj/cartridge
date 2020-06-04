@@ -19,7 +19,10 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top rtl" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{ URL::to('/') }}">کارتریج یاب</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ URL::to('/') }}">
+                <img class="" width="40" src="assets/img/tools-and-utensils.svg" alt="" />
+                کارتریج یاب
+            </a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 منو  <i class="fas fa-bars"></i>
             </button>
@@ -108,6 +111,7 @@
     @yield('modal')
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
+    @yield('next-scripts')
 </body>
 <!-- Scripts -->
 

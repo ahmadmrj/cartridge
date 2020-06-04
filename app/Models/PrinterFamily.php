@@ -56,6 +56,10 @@ class PrinterFamily extends Model
     public function brand() {
         return $this->belongsTo('App\Models\PrinterBrand');
     }
+
+    public function printers() {
+        return $this->hasMany('App\Models\PrinterModel');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

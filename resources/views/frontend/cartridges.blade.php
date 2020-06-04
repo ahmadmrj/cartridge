@@ -8,6 +8,20 @@
             <li class="breadcrumb-item"> کارتریج ها </li>
         </ol>
         </nav>
+        <nav class="breadcrumb">
+
+            <x-printer-select
+                :brands="$brands"
+                :selected="$sel_brand"
+                :selected-family="$sel_family"
+                :selected-printer="$printer_slug"
+                label="filter"
+            />
+            <button class="btn btn-info">
+                <i class="fa fa-search"></i>
+                جستجو
+            </button>
+        </nav>
         <div class="row">
             @foreach($carts as $cartridge)
                 <x-cartridge :cartData="$cartridge" />
@@ -17,4 +31,12 @@
             {{ $carts->links() }}
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            $('#brand-select').select2();
+        });
+    </script>
 @endsection

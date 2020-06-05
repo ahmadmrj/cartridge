@@ -8,6 +8,7 @@ use App\models\PrinterBrand;
 use App\Models\PrinterFamily;
 use App\Models\PrinterModel;
 use Illuminate\Http\Request;
+use stdClass;
 
 class LandingController extends Controller
 {
@@ -34,7 +35,7 @@ class LandingController extends Controller
         return json_encode($models);
     }
 
-    public function cartridgeList($id) {
+    public function cartridgeList($slug) {
         $carts = Cartridge::select(
                 'title',
                 \DB::raw('IF(picture is null, "/images/no_img.png", picture) as picture'),
@@ -42,10 +43,56 @@ class LandingController extends Controller
                 'page_yield',
                 'slug'
             )
-            ->whereHas('printers', function ($sql) use($id){
-            $sql->where('printer_id', $id);
+            ->whereHas('printers', function ($sql) use($slug){
+                $sql->where('slug', $slug);
         })->get();
 
         return json_encode($carts);
+    }
+
+    public function elastic(Request $request) {
+        $term = $request->get('term');
+        $mainRes = new stdClass();
+        $res = new stdClass();
+        $res2 = new stdClass();
+        $cartRes = [];
+        $prntRes = [];
+        if($term) {
+            $cartRes = Cartridge::select(
+                    'id',
+                    \DB::raw('title AS text'),
+                    \DB::raw('"cart" AS type'),
+                    'slug'
+                )
+                ->where('slug', 'like', '%' . $term . '%')
+                ->limit(6)
+                ->get()
+                ->all();
+
+            $prntRes = PrinterModel::select(
+                    'id',
+                    \DB::raw('title AS text'),
+                    \DB::raw('"printer" AS type'),
+                    'slug'
+                )
+                ->where('slug', 'like', '%' . $term . '%')
+                ->limit(6)
+                ->get()
+                ->all();
+        }
+
+        if($cartRes) {
+            $res->text = "کارتریج ها";
+            $res->children = $cartRes;
+            $mainRes->results[] = $res;
+        }
+
+        if($prntRes) {
+            $res2->text = "پرینترها";
+            $res2->children = $prntRes;
+            $mainRes->results[] = $res2;
+        }
+
+        return json_encode($mainRes);
     }
 }

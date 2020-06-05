@@ -28,7 +28,9 @@
                 @endif
             </div>
             <div class="col-md-7" style="line-height: 35px">
-                <img class="" src="{{ URL::asset($cartridge->printers[0]->family->brand->picture) }}">
+                <div class="top-brands">
+                    <li><a href="{{ URL::to('/cartridges?brand='.$cartridge->printers[0]->family->brand->slug) }}" id="tb_{{$cartridge->printers[0]->family->brand->slug}}" class="mr-0"></a></li>
+                </div>
                 <h4>{{ $cartridge->title }}</h4>
                 <div class="text-bold"> رنگ: {{ $cartridge->color }}</div>
                 <div class="text-bold"> تعداد صفحه: {{ $cartridge->page_yield }}</div>

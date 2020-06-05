@@ -23,10 +23,13 @@
                 <img class="" width="40" src="assets/img/tools-and-utensils.svg" alt="" />
                 کارتریج یاب
             </a>
+            <div class="hidden-xs col mx-5 align-content-center">
+                <select id="elastic-search-field" class="form-control"></select>
+            </div>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 منو  <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/cartridges">کارتریج ها</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">درباره ما</a></li>
@@ -112,6 +115,31 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
     @yield('next-scripts')
+    <script>
+        $(document).ready(function(){
+            $("#elastic-search-field").select2({
+                placeholder: '...نام کارتریج یا پرینتر را وارد کنید',
+                language: 'fa',
+                minimumInputLength: 2,
+                dir: 'rtl',
+                ajax: {
+                    url:  '/elastic',
+                    dataType: 'json'
+                },
+                templateSelection: (state) => {
+                    if (!state.id) {
+                        return state.text;
+                    } else {
+                        if(state.type == 'printer') {
+                            document.location = '/cartridges?printer='+ state.slug;
+                        } else {
+                            document.location = '/cartridge/'+ state.slug;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 <!-- Scripts -->
 

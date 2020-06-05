@@ -20,6 +20,7 @@ Route::get('model-list/{id}', 'Frontend\LandingController@modelList');
 Route::get('cartridge/{title}', 'Frontend\CartridgeController@view');
 Route::get('cartridges', 'Frontend\CartridgeController@index');
 Route::get('cartridge-list/{id}', 'Frontend\LandingController@cartridgeList');
+Route::get('elastic', 'Frontend\LandingController@elastic');
 
 
 //Route::get('/carts', function () {

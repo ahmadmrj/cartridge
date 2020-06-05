@@ -16,7 +16,7 @@ try {
 
 require('jquery.easing');
 require('select2');
-
+require('../../public/packages/select2/dist/js/i18n/fa');
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

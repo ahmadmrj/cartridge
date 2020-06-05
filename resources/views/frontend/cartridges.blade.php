@@ -9,18 +9,19 @@
         </ol>
         </nav>
         <nav class="breadcrumb">
-
-            <x-printer-select
-                :brands="$brands"
-                :selected="$sel_brand"
-                :selected-family="$sel_family"
-                :selected-printer="$printer_slug"
-                label="filter"
-            />
-            <button class="btn btn-info">
-                <i class="fa fa-search"></i>
-                جستجو
-            </button>
+            <form action="{{ URL::to('/cartridges') }}" method="get" class="w-100">
+                <x-printer-select
+                    :brands="$brands"
+                    :selected="$sel_brand"
+                    :selected-family="$sel_family"
+                    :selected-printer="$printer_slug"
+                    label="filter"
+                />
+                <button class="btn btn-info">
+                    <i class="fa fa-search"></i>
+                    جستجو
+                </button>
+            </form>
         </nav>
         <div class="row">
             @foreach($carts as $cartridge)

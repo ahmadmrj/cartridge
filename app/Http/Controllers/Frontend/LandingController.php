@@ -20,8 +20,10 @@ class LandingController extends Controller
         return view('frontend.landing', compact('brands', 'cartridges'));
     }
 
-    public function familyList($id) {
-        $families = PrinterFamily::where('brand_id', $id)->get();
+    public function familyList($slug) {
+        $families = PrinterFamily::whereHas('brand', function($query) use($slug){
+            $query->where('slug', $slug);
+        })->get();
 
         return json_encode($families);
     }

@@ -7,10 +7,10 @@
                 @else
                     text-dark
                 @endif">@if($label=='landing')۱.@endif برند</label>
-            <select class="form-control" id="brand-select">
+            <select class="form-control" id="brand-select" name="brand">
                 <option value="" selected disabled>لطفا انتخاب کنید...</option>
                 @foreach($brands as $brand)
-                    <option value="{{ $brand->id }}" @if($brand->slug == $selected) selected @endif>{{ $brand->title }}</option>
+                    <option value="{{ $brand->slug }}" @if($brand->slug == $selected) selected @endif>{{ $brand->title }}</option>
                 @endforeach
             </select>
         </div>
@@ -21,7 +21,7 @@
             @else
                 text-dark
             @endif" id="family-label">@if($label=='landing')۲.@endif خانواده پرینتر</label>
-            <select class="form-control" id="printer-family" name="printer_family">
+            <select class="form-control" id="printer-family" name="family">
                 @if($families)
                     @foreach($families as $family)
                         <option value="{{ $family->id }}" @if($family->id == $selectedFamily) selected @endif>{{ $family->title }}</option>
@@ -36,10 +36,10 @@
             @else
                 text-dark
             @endif" id="model-label">@if($label=='landing')۳.@endif مدل پرینتر</label>
-            <select class="form-control" id="printer-model" name="printer_model">
+            <select class="form-control" id="printer-model" name="printer">
                 @if($printers)
                     @foreach($printers as $printer)
-                        <option value="{{ $printer->id }}" @if($printer->slug == $selectedPrinter) selected @endif>{{ $printer->title }}</option>
+                        <option value="{{ $printer->slug }}" @if($printer->slug == $selectedPrinter) selected @endif>{{ $printer->title }}</option>
                     @endforeach
                 @endif
             </select>
@@ -59,7 +59,7 @@
             @endif
             $('#brand-select').change(function () {
                 $.get('family-list/' + $(this).val(), function (data) {
-                    let familySelect = $('select[name="printer_family"]');
+                    let familySelect = $('select[name="family"]');
                     let familyLabel = $('#family-label');
                     familySelect.empty();
                     familySelect.append('<option value="" selected> لطفا انتخاب کنید... </option>');
@@ -74,12 +74,12 @@
 
             $('#printer-family').change(function () {
                 $.get('model-list/' + $(this).val(), function (data) {
-                    let modelSelect = $('select[name="printer_model"]');
+                    let modelSelect = $('select[name="printer"]');
                     let modelLabel = $('#model-label');
                     modelSelect.empty();
                     modelSelect.append('<option value="" selected> لطفا انتخاب کنید... </option>');
                     $.each(data, function (key, value) {
-                        modelSelect.append('<option value="' + value.id + '">' + value.title + '</option>');
+                        modelSelect.append('<option value="' + value.slug + '">' + value.title + '</option>');
                     });
                     modelSelect.prop('disabled', false);
                     modelLabel.addClass('text-bold');

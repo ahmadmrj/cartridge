@@ -15,4 +15,6 @@ Route::group([
     Route::crud('printerfamily', 'PrinterFamilyCrudController');
     Route::crud('printermodel', 'PrinterModelCrudController');
     Route::crud('cartridge', 'CartridgeCrudController');
+
+    Route::post('cartridge/{id}/cart-media-upload', 'CartridgeCrudController@uploadMedia');
 }); // this should be the absolute last line of this file

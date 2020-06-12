@@ -30868,6 +30868,24 @@ a:hover {
   display: none;
 }
 
+.carousel-thumbnails .carousel-indicators {
+  position: static;
+  left: initial;
+  width: initial;
+  margin-right: initial;
+  margin-left: initial;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.carousel-thumbnails .carousel-indicators > li {
+  width: initial;
+  height: initial;
+  text-indent: initial;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
 #new-brands .title {
   text-align: center;
   margin-bottom: 18px;

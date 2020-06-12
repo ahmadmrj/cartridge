@@ -4,15 +4,6 @@
         <div class="dz-message">
             Drop files here or click to upload.
         </div>
-
-        @if ($entry->{$field['name']})
-            @foreach($entry->{$field['name']} as $key => $image)
-                <div class="dz-preview" data-id="{{ $key }}" data-path="{{ $image }}">
-                    <img class="dropzone-thumbnail" src={{ asset($image) }}>
-                    <a class="dz-remove" href="javascript:void(0);" data-remove="{{ $key }}" data-path="{{ $image }}">Remove file</a>
-                </div>
-            @endforeach
-        @endif
     </div>
 </div>
 
@@ -49,7 +40,7 @@
                 paramName: '{{ $field['name'] }}',
                 uploadMultiple: true,
                 acceptedFiles: "{{ $field['mimes'] }}",
-                addRemoveLinks: true,
+                // addRemoveLinks: true,
                 // autoProcessQueue: false,
                 maxFilesize: {{ $field['filesize'] }},
                 parallelUploads: 10,
@@ -59,21 +50,14 @@
                     formData.append("id", {{ $entry->id }});
                 },
                 error: function(file, response) {
-                    console.log('error');
-                    console.log(file)
-                    console.log(response)
-
                     $(file.previewElement).find('.dz-error-message').remove();
                     $(file.previewElement).remove();
-
-                    alert(response);
                 },
                 success : function(file, status) {
-                    console.log('success');
 
                     // clear the images in the dropzone
-                    $('.dropzone').empty();
-
+                    // $('.dropzone').empty();
+                    // console.log(status);
                     // repopulate the dropzone with all images (new and old)
                     $.each(status.images, function(key, image_path) {
                         $('.dropzone').append('<div class="dz-preview" data-id="'+key+'" data-path="'+image_path+'"><img class="dropzone-thumbnail" src="{{ url('') }}/'+image_path+'" /><a class="dz-remove" href="javascript:void(0);" data-remove="'+key+'" data-path="'+image_path+'">Remove file</a></div>');
@@ -81,89 +65,77 @@
 
                     var notification_type;
 
-                    alert(status.message);
-                }
-            });
+                },
+                init: function() {
+                    let myDropzone = this;
 
-            // Reorder images
-            $(".dropzone").sortable({
-                items: '.dz-preview',
-                cursor: 'move',
-                opacity: 0.5,
-                containment: '.dropzone',
-                distance: 20,
-                scroll: true,
-                tolerance: 'pointer',
-                stop: function (event, ui) {
-                    // console.log('sortable stop');
-                    var image_order = [];
+                    this.on("addedfile", function(file) {
 
-                    $('.dz-preview').each(function() {
-                        var image_id = $(this).data('id');
-                        var image_path = $(this).data('path');
-                        image_order.push({ id: image_id, path: image_path});
-                    });
+                        var removeButton = Dropzone.createElement('<a href="javascript:void(0);">حذف فایل</a>');
 
-                    // console.log(image_order);
+                        // Capture the Dropzone instance as closure.
+                        var _this = this;
 
-                    $.ajax({
-                        url: '{{ url($crud->route.'/'.$entry->id.'/'.$field['reorder_route']) }}',
-                        type: 'POST',
-                        data: {
-                            order: image_order,
-                            entry_id: {{ $entry->id }}
-                        },
-                    })
-                        .done(function(status) {
-                            var notification_type;
+                        // Listen to the click event
+                        removeButton.addEventListener("click", function(e) {
+                            // Make sure the button click doesn't submit the form:
+                            e.preventDefault();
+                            e.stopPropagation();
 
-                            if (status.success) {
-                                notification_type = 'success';
-                            } else {
-                                notification_type = 'error';
-                            }
-
-                            new PNotify({
-                                text: status.message,
-                                type: notification_type,
-                                icon: false
+                            // Remove the file preview.
+                            _this.removeFile(file);
+                            // If you want to the delete the file on the server as well,
+                            $.ajax({
+                                url: '{{ url($crud->route.'/'.$entry->id.'/'.$field['delete_route']) }}',
+                                type: 'POST',
+                                data: {
+                                    image_id: file.name,
+                                    image_path: file.path
+                                },
                             });
                         });
+
+                        // Add the button to the file preview element.
+                        file.previewElement.appendChild(removeButton);
+                    });
+
+                    $.getJSON('/cartridge-media-list/{{$entry->id}}', function(data) {
+                        $.each(data, function(index, val){
+                            let mockFile = { name: val.id, size: val.size };
+                            myDropzone.displayExistingFile(mockFile, val.address);
+                        });
+                    });
                 }
             });
 
-            // Delete image
-            $(document).on('click', '.dz-remove', function () {
-                var image_id = $(this).data('remove');
-                var image_path = $(this).data('path');
+            {{--// Delete image--}}
+            {{--$('.dz-remove').click(function () {--}}
+            {{--    alert('asdf');--}}
+            {{--    var image_id = $(this).data('remove');--}}
+            {{--    var image_path = $(this).data('path');--}}
 
-                $.ajax({
-                    url: '{{ url($crud->route.'/'.$entry->id.'/'.$field['delete_route']) }}',
-                    type: 'POST',
-                    data: {
-                        entry_id: {{ $entry->id }},
-                        image_id: image_id,
-                        image_path: image_path
-                    },
-                })
-                    .done(function(status) {
-                        var notification_type;
+            {{--    $.ajax({--}}
+            {{--        url: '{{ url($crud->route.'/'.$entry->id.'/'.$field['delete_route']) }}',--}}
+            {{--        type: 'POST',--}}
+            {{--        data: {--}}
+            {{--            entry_id: {{ $entry->id }},--}}
+            {{--            image_id: image_id,--}}
+            {{--            image_path: image_path--}}
+            {{--        },--}}
+            {{--    })--}}
+            {{--        .done(function(status) {--}}
+            {{--            let notification_type;--}}
 
-                        if (status.success) {
-                            notification_type = 'success';
-                            $('div.dz-preview[data-id="'+image_id+'"]').remove();
-                        } else {
-                            notification_type = 'error';
-                        }
+            {{--            if (status.success) {--}}
+            {{--                notification_type = 'success';--}}
+            {{--                $('div.dz-preview[data-id="'+image_id+'"]').remove();--}}
+            {{--            } else {--}}
+            {{--                notification_type = 'error';--}}
+            {{--            }--}}
 
-                        new PNotify({
-                            text: status.message,
-                            type: notification_type,
-                            icon: false
-                        });
-                    });
+            {{--        });--}}
 
-            });
+            {{--});--}}
 
         </script>
 

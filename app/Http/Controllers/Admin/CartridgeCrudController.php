@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CartridgeRequest;
+use App\models\CartridgeMedia;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-
+use Illuminate\Http\Request;
 /**
  * Class CartridgeCrudController
  * @package App\Http\Controllers\Admin
@@ -31,7 +32,12 @@ class CartridgeCrudController extends CrudController
         $this->crud->addColumn(['name' => 'title', 'type' => 'text', 'label' => __('Title')]);
         $this->crud->addColumn(['name' => 'color', 'type' => 'text', 'label' => __('Color')]);
         $this->crud->addColumn(['name' => 'page_yield', 'type' => 'text', 'label' => __('Page Yield')]);
-        $this->crud->addColumn(['name' => 'picture', 'type' => 'image', 'label' => __('Picture')]);
+        $this->crud->addColumn([
+            'name' => 'address',
+            'type' => 'relimage',
+            'label' => __('Picture'),
+            'rel' => 'medias',
+        ]);
     }
 
     protected function setupCreateOperation()
@@ -76,14 +82,6 @@ class CartridgeCrudController extends CrudController
         ]);
 
         $this->crud->addField(['name'=>'buy_link', 'type'=>'text', 'title'=>__('Buy Link')]);
-        $this->crud->addField([
-            'label' => __('Picture'),
-            'name' => "picture",
-            'type' => 'image',
-            'upload' => true,
-            'crop' => true, // set to true to allow cropping, false to disable
-            'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
-        ]);
     }
 
     protected function setupUpdateOperation()
@@ -158,7 +156,22 @@ class CartridgeCrudController extends CrudController
         ]);
     }
 
-    public function uploadMedia() {
-        dd($_FILES);
+    public function uploadMedia(Request $request, $id) {
+        foreach ($request->file('picture') as $file){
+            $path = $file->store('cartridge_extra_images', 'public_uploads');
+
+            CartridgeMedia::create(['cartridge_id'=>intval($id), 'address'=>$path]);
+        }
+        return json_encode(['result' => 'ok']);
+    }
+
+    public function RemoveMedia(Request $request, $id) {
+        $img = CartridgeMedia::where('cartridge_id', $id)
+            ->where('id', $request->post('image_id'))
+            ->first();
+
+        \Storage::disk('public_uploads')->delete($img->address);
+
+        $img->delete();
     }
 }

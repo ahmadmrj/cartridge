@@ -17,4 +17,5 @@ Route::group([
     Route::crud('cartridge', 'CartridgeCrudController');
 
     Route::post('cartridge/{id}/cart-media-upload', 'CartridgeCrudController@uploadMedia');
+    Route::post('cartridge/{id}/cart-media-delete', 'CartridgeCrudController@RemoveMedia');
 }); // this should be the absolute last line of this file

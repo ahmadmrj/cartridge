@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cartridge;
+use App\models\CartridgeMedia;
 use App\models\PrinterBrand;
 use App\Models\PrinterFamily;
 use App\Models\PrinterModel;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use stdClass;
 
@@ -14,7 +16,8 @@ class LandingController extends Controller
 {
     public function index() {
         $brands = PrinterBrand::all();
-        $cartridges = Cartridge::whereNotNull(['buy_link', 'picture'])
+        $cartridges = Cartridge::has('medias')
+            ->whereNotNull(['buy_link'])
             ->limit(8)
             ->get();
 
@@ -48,6 +51,19 @@ class LandingController extends Controller
         })->get();
 
         return json_encode($carts);
+    }
+
+    public function cartridgeMediaList($id) {
+        $images = CartridgeMedia::where('cartridge_id', $id)
+            ->get()
+            ->all();
+
+        foreach ($images as $img){
+            $img->size = \Storage::disk('public_uploads')->size($img->address);
+            $img->address = asset('uploads/'.$img->address);
+        }
+
+        return json_encode($images);
     }
 
     public function elastic(Request $request) {

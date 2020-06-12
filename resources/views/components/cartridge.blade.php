@@ -8,12 +8,15 @@
                     </div>
                 </div>
 {{--                {{$cartData->medias[0]->address}}--}}
-                @if(file_exists('uploads/'.$cartData->medias[0]->address))
-                    <img class="img-fluid" src="{{ URL::asset('uploads/'.$cartData->medias[0]->address) }}" alt="" />
+                @if(isset($cartData->medias[0]))
+                    @if(file_exists('uploads/'.$cartData->medias[0]->address))
+                        <img class="img-fluid" src="{{ URL::asset('uploads/'.$cartData->medias[0]->address) }}" alt="" />
+                    @else
+                        <img class="img-fluid" src="{{ URL::asset('/images/no_img.png') }}" alt="" />
+                    @endif
                 @else
                     <img class="img-fluid" src="{{ URL::asset('/images/no_img.png') }}" alt="" />
                 @endif
-
                 <h5 class="text-center">{{$cartData->title}}</h5>
             </div>
         </div>

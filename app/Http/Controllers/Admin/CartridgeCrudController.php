@@ -126,6 +126,7 @@ class CartridgeCrudController extends CrudController
         ]);
 
         $this->crud->addField(['name'=>'buy_link', 'type'=>'text', 'title'=>__('Buy Link')]);
+
         $this->crud->addField([
             'label' => __('Picture'),
             'name' => "picture",

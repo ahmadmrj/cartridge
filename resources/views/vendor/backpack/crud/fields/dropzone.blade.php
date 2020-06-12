@@ -7,7 +7,6 @@
     </div>
 </div>
 
-
 @if ($crud->checkIfFieldIsFirstOfItsType($field, $fields))
     {{-- FIELD EXTRA CSS  --}}
     {{-- push things in the after_styles section --}}
@@ -108,36 +107,6 @@
                 }
             });
 
-            {{--// Delete image--}}
-            {{--$('.dz-remove').click(function () {--}}
-            {{--    alert('asdf');--}}
-            {{--    var image_id = $(this).data('remove');--}}
-            {{--    var image_path = $(this).data('path');--}}
-
-            {{--    $.ajax({--}}
-            {{--        url: '{{ url($crud->route.'/'.$entry->id.'/'.$field['delete_route']) }}',--}}
-            {{--        type: 'POST',--}}
-            {{--        data: {--}}
-            {{--            entry_id: {{ $entry->id }},--}}
-            {{--            image_id: image_id,--}}
-            {{--            image_path: image_path--}}
-            {{--        },--}}
-            {{--    })--}}
-            {{--        .done(function(status) {--}}
-            {{--            let notification_type;--}}
-
-            {{--            if (status.success) {--}}
-            {{--                notification_type = 'success';--}}
-            {{--                $('div.dz-preview[data-id="'+image_id+'"]').remove();--}}
-            {{--            } else {--}}
-            {{--                notification_type = 'error';--}}
-            {{--            }--}}
-
-            {{--        });--}}
-
-            {{--});--}}
-
         </script>
-
     @endpush
 @endif

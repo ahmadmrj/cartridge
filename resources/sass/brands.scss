@@ -14,11 +14,10 @@
     margin-bottom: 30px;
 }
 
-.top-brands li {
-    display: block;
-    flex-basis: 16%;
-    text-align: center;
-    margin: 10px 0;
+.subli{
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .top-brands li a {

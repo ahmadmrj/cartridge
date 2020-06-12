@@ -32,7 +32,7 @@
                 <img class="" width="40" src="assets/img/tools-and-utensils.svg" alt="" />
                 کارتریج یاب
             </a>
-            <div class="hidden-xs col mx-5 align-content-center">
+            <div class="d-none d-md-flex col-md-6 align-content-center">
                 <select id="elastic-search-field" class="form-control"></select>
             </div>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

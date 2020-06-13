@@ -29,7 +29,7 @@
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top rtl" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="{{ URL::to('/') }}">
-                <img class="" width="40" src="assets/img/tools-and-utensils.svg" alt="" />
+                <img class="" width="40" src="{{ URL::asset('assets/img/tools-and-utensils.svg')}}" alt="" />
                 کارتریج یاب
             </a>
             <div class="d-none d-md-flex col-md-6 align-content-center">

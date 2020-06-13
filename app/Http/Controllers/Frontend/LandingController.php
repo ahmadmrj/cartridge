@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cartridge;
-use App\models\CartridgeMedia;
-use App\models\PrinterBrand;
+use App\Models\CartridgeMedia;
+use App\Models\PrinterBrand;
 use App\Models\PrinterFamily;
 use App\Models\PrinterModel;
 use Illuminate\Database\Eloquent\Builder;

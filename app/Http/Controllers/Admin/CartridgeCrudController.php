@@ -54,6 +54,7 @@ class CartridgeCrudController extends CrudController
         ]);
 
         $this->crud->addField(['name'=>'title', 'type'=>'text', 'title'=>__('Title')]);
+        $this->crud->addField(['name'=>'technical_title', 'type'=>'text', 'title'=>__('Technical Title')]);
         $this->crud->addField(['name'=>'page_yield', 'type'=>'number', 'title'=>__('Page Yield')]);
         $this->crud->addField([
             'name'=>'color',
@@ -82,50 +83,12 @@ class CartridgeCrudController extends CrudController
         ]);
 
         $this->crud->addField(['name'=>'buy_link', 'type'=>'text', 'title'=>__('Buy Link')]);
+        $this->crud->addField(['name'=>'description', 'type'=>'textarea', 'title'=>__('Description')]);
     }
 
     protected function setupUpdateOperation()
     {
-        $this->crud->setValidation(CartridgeRequest::class);
-
-        $this->crud->addField([
-            'name'  => 'printers',
-            'type'  => 'select2_multiple',
-            'label' => __('printer model'),
-            'entity' => 'printers',
-            'attribute' => 'title',
-            'pivot'     => true
-        ]);
-
-        $this->crud->addField(['name'=>'title', 'type'=>'text', 'title'=>__('Title')]);
-        $this->crud->addField(['name'=>'page_yield', 'type'=>'number', 'title'=>__('Page Yield')]);
-        $this->crud->addField([
-            'name'=>'color',
-            'type'=>'select_from_array',
-            'title'=>__('Color'),
-            'options' => [
-                'black' => 'Black',
-                'blue' => 'Blue',
-                'cyan' => 'Cyan',
-                'gray' => 'Gray',
-                'green' => 'Green',
-                'light_black' => 'Light Black',
-                'light_cyan' => 'Light Cyan',
-                'light_gray' => 'Light Gray',
-                'light_magenta' => 'Light Magenta',
-                'magenta' => 'Magenta',
-                'magenta_cyan_yellow' => 'Magenta / Cyan / Yellow',
-                'matte_black' => 'Matte Black',
-                'micr' => 'MICR',
-                'n_a' => 'N/A',
-                'orange' => 'Orange',
-                'photo_black' => 'Photo Black',
-                'red' => 'Red',
-                'yellow' => 'Yellow'
-            ]
-        ]);
-
-        $this->crud->addField(['name'=>'buy_link', 'type'=>'text', 'title'=>__('Buy Link')]);
+        $this->setupCreateOperation();
 
         $this->crud->addField([
             'label' => __('Picture'),

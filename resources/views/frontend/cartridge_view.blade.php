@@ -55,7 +55,9 @@
             </div>
             <div class="col-md-7" style="line-height: 35px">
                 <div class="top-brands">
-                    <li><a href="{{ URL::to('/cartridges?brand='.$cartridge->printers[0]->family->brand->slug) }}" id="tb_{{$cartridge->printers[0]->family->brand->slug}}" class="mr-0"></a></li>
+                    <ul class="pr-0">
+                        <li><a href="{{ URL::to('/cartridges?brand='.$cartridge->printers[0]->family->brand->slug) }}" id="tb_{{$cartridge->printers[0]->family->brand->slug}}" class="mr-0"></a></li>
+                    </ul>
                 </div>
                 <h4>{{ $cartridge->title }}</h4>
                 <div class="text-bold"> رنگ: {{ $cartridge->color }}</div>

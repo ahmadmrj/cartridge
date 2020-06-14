@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTag extends Migration
+class CreateTagPivot extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTag extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('cartridge_tag', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->integer('cartridge_id');
+            $table->integer('tag_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTag extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('cartridge_tag');
     }
 }

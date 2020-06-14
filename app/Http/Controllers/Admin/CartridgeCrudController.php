@@ -83,7 +83,7 @@ class CartridgeCrudController extends CrudController
         ]);
 
         $this->crud->addField(['name'=>'buy_link', 'type'=>'text', 'title'=>__('Buy Link')]);
-        $this->crud->addField(['name'=>'key_words', 'type'=>'text', 'title'=>__('Key Words (separate by , )')]);
+        $this->crud->addField(['name'=>'key_words', 'type'=>'text', 'title'=>__('Key words')]);
 
         $this->crud->addField(['name'=>'description', 'type'=>'textarea', 'title'=>__('Description')]);
     }

@@ -48,7 +48,17 @@ class Cartridge extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-     protected $fillable = ['title', 'technical_title', 'description', 'color', 'page_yield', 'buy_link', 'picture', 'slug'];
+     protected $fillable = [
+         'title',
+         'technical_title',
+         'description',
+         'key_words',
+         'color',
+         'page_yield',
+         'buy_link',
+         'picture',
+         'slug'
+     ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -78,6 +88,10 @@ class Cartridge extends Model
             'cartridge_id',
             'id'
         );
+    }
+
+    public function tags() {
+        return $this->belongsToMany('App\Models\Tag');
     }
     /*
     |--------------------------------------------------------------------------

@@ -14,8 +14,9 @@ class AlterCartridge extends Migration
     public function up()
     {
         Schema::table('cartridges', function (Blueprint $table) {
-            $table->string('technical_title')->after('title');
-            $table->string('description')->after('slug');
+            $table->string('technical_title')->after('title')->nullable();
+            $table->string('description')->after('slug')->nullable();
+            $table->string('key_words')->after('slug')->nullable();
         });
     }
 

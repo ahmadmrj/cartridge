@@ -11,6 +11,7 @@
         </nav>
         <div class="row">
             <div class="col-md-5">
+                @if(file_exists($cartridge->_picture))
                 <div id="carouselExampleCaptions" class="carousel slide carousel-thumbnails" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach($cartridge->medias as $key => $media)
@@ -37,11 +38,10 @@
                         @endforeach
                     </ol>
                 </div>
-{{--                @if(file_exists($cartridge->picture))--}}
 {{--                    <img class="img-fluid rounded img-thumbnail" width="100%" src="">--}}
-{{--                @else--}}
-{{--                    <img class="img-fluid  rounded img-thumbnail" width="100%" src="{{ URL::asset('/images/no_img.png') }}">--}}
-{{--                @endif--}}
+                @else
+                    <img class="img-fluid  rounded img-thumbnail" width="100%" src="{{ URL::asset('/images/no_img.png') }}">
+                @endif
                 @if($cartridge->buy_link)
                     <a target="_blank" href="{{ $cartridge->buy_link }}" class="btn btn-success w-100">
                         <i class="fa fa-shopping-cart"></i>
@@ -60,6 +60,7 @@
                     </ul>
                 </div>
                 <h4>{{ $cartridge->title }}</h4>
+                <div class="text-bold"> عنوان فنی: {{ $cartridge->technical_title }}</div>
                 <div class="text-bold"> رنگ: {{ $cartridge->color }}</div>
                 <div class="text-bold"> تعداد صفحه: {{ $cartridge->page_yield }}</div>
                 <div class="text-bold"> پرینترهای سازگار: </div>

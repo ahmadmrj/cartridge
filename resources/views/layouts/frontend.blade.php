@@ -11,7 +11,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title> کارتریج یاب </title>
+    <title>
+        @if(isset($cartridge))
+            {{ $cartridge->title }}
+        @else
+            کارتریج یاب
+        @endif
+    </title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169187036-1"></script>
     <script>

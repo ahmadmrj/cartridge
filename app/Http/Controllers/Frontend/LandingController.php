@@ -39,16 +39,20 @@ class LandingController extends Controller
     }
 
     public function cartridgeList($slug) {
-        $carts = Cartridge::select(
-                'title',
-                \DB::raw('IF(picture is null, "/images/no_img.png", picture) as picture'),
-                'color',
-                'page_yield',
-                'slug'
-            )
+        $carts = Cartridge::with('medias')
             ->whereHas('printers', function ($sql) use($slug){
                 $sql->where('slug', $slug);
-        })->get();
+            })->get()->all();
+
+        foreach ($carts as $cart) {
+//            dd($cart);
+            if(isset($cart->medias[0])) {
+//                dd($cart->medias);
+                $cart->picture = 'uploads/'.$cart->medias[0]->address;
+            } else {
+                $cart->picture = "/images/no_img.png";
+            }
+        }
 
         return json_encode($carts);
     }

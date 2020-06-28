@@ -42,6 +42,8 @@ class PrinterSelect extends Component
             $families = PrinterFamily::whereHas('brand', function($query) {
                 $query->where('slug', $this->selected);
             })->get()->all();
+
+            $this->selectedFamily = $families[0]->id;
         }
 
         if(!is_null($this->selectedFamily)) {

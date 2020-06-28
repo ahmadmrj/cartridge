@@ -53,13 +53,13 @@ class CartridgeCrudController extends CrudController
             'pivot'     => true
         ]);
 
-        $this->crud->addField(['name'=>'title', 'type'=>'text', 'title'=>__('Title')]);
-        $this->crud->addField(['name'=>'technical_title', 'type'=>'text', 'title'=>__('Technical Title')]);
-        $this->crud->addField(['name'=>'page_yield', 'type'=>'number', 'title'=>__('Page Yield')]);
+        $this->crud->addField(['name'=>'title', 'type'=>'text', 'label'=>__('Title')]);
+        $this->crud->addField(['name'=>'technical_title', 'type'=>'text', 'label'=>__('Technical Title')]);
+        $this->crud->addField(['name'=>'page_yield', 'type'=>'number', 'label'=>__('Page Yield')]);
         $this->crud->addField([
             'name'=>'color',
             'type'=>'select_from_array',
-            'title'=>__('Color'),
+            'label'=>__('Color'),
             'options' => [
                 'black' => 'Black',
                 'blue' => 'Blue',
@@ -82,10 +82,19 @@ class CartridgeCrudController extends CrudController
             ]
         ]);
 
-        $this->crud->addField(['name'=>'buy_link', 'type'=>'text', 'title'=>__('Buy Link')]);
-        $this->crud->addField(['name'=>'key_words', 'type'=>'text', 'title'=>__('Key words')]);
+        $this->crud->addField(['name'=>'buy_link', 'type'=>'text', 'label'=>__('Buy Link')]);
+        $this->crud->addField([
+            'name'=>'key_words',
+            'type'=>'text',
+            'label'=> "کلمات کلیدی (سئو)",
+            'hint' => 'کلمات با ، از هم جدا شود.',
+            'attributes' => [
+                'placeholder' => 'کلمه کلیدی ۱، کلمه کلیدی۲، کلمه کلیدی، و ...',
+            ]
+        ]);
 
-        $this->crud->addField(['name'=>'description', 'type'=>'textarea', 'title'=>__('Description')]);
+        $this->crud->addField(['name'=>'seo_title', 'type'=>'text', 'label'=>"عنوان جستجو (سئو)"]);
+        $this->crud->addField(['name'=>'description', 'type'=>'textarea', 'label'=>"توضیحات (سئو)"]);
     }
 
     protected function setupUpdateOperation()

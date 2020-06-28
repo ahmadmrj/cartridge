@@ -39,19 +39,19 @@ Route::get('elastic', 'Frontend\LandingController@elastic');
 //        }
 //    }
 //});
-
-Route::get('/refines', function () {
-    $carts = DB::table('cartridges')->get();
-    foreach ($carts as $cart){
-        if(file_exists($cart->picture)){
-            echo $cart->picture.'<br>';
-            \App\models\CartridgeMedia::create([
-                'cartridge_id'=>$cart->id,
-                'address'=> str_replace('uploads/','', $cart->picture)
-            ]);
-        }
-    }
-});
+//
+//Route::get('/refines', function () {
+//    $carts = DB::table('cartridges')->get();
+//    foreach ($carts as $cart){
+//        if(file_exists($cart->picture)){
+//            echo $cart->picture.'<br>';
+//            \App\models\CartridgeMedia::create([
+//                'cartridge_id'=>$cart->id,
+//                'address'=> str_replace('uploads/','', $cart->picture)
+//            ]);
+//        }
+//    }
+//});
 
 //Route::get('/usr', function () {
 //    $usr = \App\User::where('id', 1)->first();

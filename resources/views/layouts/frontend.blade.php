@@ -12,8 +12,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>
-        @if(isset($cartridge))
-            {{ $cartridge->title }}
+        @if(isset($seoTitle))
+            {{ $seoTitle }}
         @else
             کارتریج یاب
         @endif

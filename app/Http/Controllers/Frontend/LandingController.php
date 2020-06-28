@@ -10,18 +10,19 @@ use App\Models\PrinterFamily;
 use App\Models\PrinterModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Route;
 use stdClass;
 
 class LandingController extends Controller
 {
     public function index() {
         $brands = PrinterBrand::all();
-        $cartridges = Cartridge::has('medias')
+        $cartridgeList = Cartridge::has('medias')
             ->whereNotNull(['buy_link'])
             ->limit(8)
             ->get();
 
-        return view('frontend.landing', compact('brands', 'cartridges'));
+            return view('frontend.landing', compact('brands', 'cartridgeList'));
     }
 
     public function familyList($slug) {
@@ -85,7 +86,7 @@ class LandingController extends Controller
                     'slug'
                 )
                 ->where('slug', 'like', '%' . $term . '%')
-                ->limit(6)
+                ->limit(60)
                 ->get()
                 ->all();
 
@@ -96,7 +97,7 @@ class LandingController extends Controller
                     'slug'
                 )
                 ->where('slug', 'like', '%' . $term . '%')
-                ->limit(6)
+                ->limit(60)
                 ->get()
                 ->all();
         }

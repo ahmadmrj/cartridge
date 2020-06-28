@@ -16,9 +16,11 @@ class CartridgeController extends Controller
         $sel_printer = $request->get('printer');
         $sel_family = null;
         $printer_slug = null;
+        $seoTitle = 'کارتریج یاب';
 
         if($sel_printer) {
             $printer = PrinterModel::where('slug', $sel_printer)->get()->first();
+            $seoTitle .= ' | '.$printer->title;
             $printer_slug = $printer->slug;
             $sel_family = $printer->family->id;
             $sel_brand = $printer->family->brand->slug;
@@ -37,12 +39,14 @@ class CartridgeController extends Controller
         $brands = PrinterBrand::all();
 
 
-        return view('frontend.cartridges', compact('carts', 'brands', 'sel_brand', 'sel_printer', 'sel_family', 'printer_slug'));
+        return view('frontend.cartridges', compact('carts', 'brands', 'sel_brand', 'sel_printer', 'sel_family', 'printer_slug', 'seoTitle'));
     }
 
     public function view($title) {
         $cartridge = Cartridge::with('printers.family.brand')->whereSlug($title)->firstOrFail();
+        $seoTitle = $cartridge->title . ' | کارتریج یاب';
 
-        return view('frontend.cartridge_view', compact('cartridge'));
+        if($cartridge->seo_title) $seoTitle = $cartridge->seo_title;
+        return view('frontend.cartridge_view', compact('cartridge', 'seoTitle'));
     }
 }

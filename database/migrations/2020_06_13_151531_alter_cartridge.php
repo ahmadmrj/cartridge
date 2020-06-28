@@ -17,6 +17,7 @@ class AlterCartridge extends Migration
             $table->string('technical_title')->after('title')->nullable();
             $table->string('description')->after('slug')->nullable();
             $table->string('key_words')->after('slug')->nullable();
+            $table->string('seo_title')->after('slug')->nullable();
         });
     }
 

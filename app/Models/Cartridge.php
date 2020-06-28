@@ -53,6 +53,7 @@ class Cartridge extends Model
          'technical_title',
          'description',
          'key_words',
+         'seo_title',
          'color',
          'page_yield',
          'buy_link',

@@ -26,7 +26,7 @@
             </div>
             <!-- cartridge Grid Items-->
             <div class="row rtl" id="cartridge-grid-items">
-            @foreach($cartridges as $cartridge)
+            @foreach($cartridgeList as $cartridge)
                 <x-cartridge :cartData="$cartridge" />
             @endforeach
             </div>

@@ -1,5 +1,5 @@
 <div class="col-md-4 col-lg-3 mb-5">
-    <a href="{{ URL::to('/cartridge/'.str_slug($cartData->title)) }}">
+    <a href="{{ URL::to('/cartridge/'.str_slug($cartData->technical_title)) }}">
         <div class="card">
             <div class="cartridge-item">
                 <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">

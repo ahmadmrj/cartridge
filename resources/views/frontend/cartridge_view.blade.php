@@ -11,7 +11,7 @@
         </nav>
         <div class="row">
             <div class="col-md-5">
-                @if(file_exists($cartridge->_picture))
+                @if(file_exists($cartridge->_picture) or isset($cartridge->medias[0]))
                 <div id="carouselExampleCaptions" class="carousel slide carousel-thumbnails" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach($cartridge->medias as $key => $media)

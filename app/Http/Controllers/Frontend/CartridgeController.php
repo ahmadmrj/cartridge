@@ -43,10 +43,14 @@ class CartridgeController extends Controller
     }
 
     public function view($title) {
-        $cartridge = Cartridge::with('printers.family.brand')->whereSlug($title)->firstOrFail();
+        $cartridge = Cartridge::with('printers.family.brand')
+            ->with('medias')
+            ->whereSlug($title)
+            ->firstOrFail();
         $seoTitle = $cartridge->title . ' | کارتریج یاب';
 
         if($cartridge->seo_title) $seoTitle = $cartridge->seo_title;
+//        dd($cartridge->medias);
         return view('frontend.cartridge_view', compact('cartridge', 'seoTitle'));
     }
 }

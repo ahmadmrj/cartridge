@@ -17,7 +17,7 @@ class ProductController extends Controller
         $res = \DB::connection('shop')->select(\DB::raw('
             SELECT
             pts_product.`id_product`,
-            pts_image_lang.legend,
+            pts_product_lang.name as legend,
             pts_category_lang.name AS cat,
             pts_manufacturer.name AS brand,
             pts_product.`price`,
@@ -26,16 +26,21 @@ class ProductController extends Controller
             pts_product.`depth`,
             pts_product.`weight`
             FROM `pts_product`
-            INNER JOIN pts_image ON pts_product.id_product = pts_image.id_product
-            INNER JOIN pts_image_lang ON pts_image.id_image = pts_image_lang.id_image
+            INNER JOIN pts_product_lang ON pts_product_lang.id_product = pts_product.id_product
             INNER JOIN pts_category_product ON pts_category_product.id_product = pts_product.id_product
             INNER JOIN pts_category ON pts_category.id_category = pts_category_product.id_category
             INNER JOIN pts_category_lang ON pts_category_lang.id_category = pts_category.id_category
             INNER JOIN pts_manufacturer ON pts_manufacturer.id_manufacturer = pts_product.id_manufacturer
             WHERE
-            pts_image_lang.id_lang=1
+            pts_product_lang.id_lang=1
             AND pts_category_lang.id_lang=1
+            GROUP BY pts_product.`id_product`
         '));
+
+        foreach ($res as $item) {
+            $item->price = intval($item->price);
+        }
+
         return response()->json($res, 200);
     }
 

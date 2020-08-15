@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\ShopProduct;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -75,7 +76,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $prd = ShopProduct::where('id_product', $id)->first();
+        $prd->timestamps = false;
+        $prd->price = $request->post('price');
+//        print_r($prd->price);
+        $prd->save(['timestamps' => false]);
+
+        return response()->json(['msg' => 'بروزرسانی قیمت انجام شد.' . $id, 'prd'=>$prd], 200);
     }
 
     /**

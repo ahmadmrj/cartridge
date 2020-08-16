@@ -31,7 +31,7 @@ class CartridgeCrudController extends CrudController
     {
         $this->crud->addColumn(['name' => 'title', 'type' => 'text', 'label' => __('Title')]);
         $this->crud->addColumn(['name' => 'color', 'type' => 'text', 'label' => __('Color')]);
-        $this->crud->addColumn(['name' => 'page_yield', 'type' => 'text', 'label' => __('Page Yield')]);
+        $this->crud->addColumn(['name' => 'buy_link', 'type' => 'text', 'label' => __('Buy Link')]);
         $this->crud->addColumn([
             'name' => 'address',
             'type' => 'relimage',
@@ -119,6 +119,7 @@ class CartridgeCrudController extends CrudController
         $this->crud->addColumn('title');
         $this->crud->addColumn('color');
         $this->crud->addColumn('page_yield');
+        $this->crud->addColumn('buy_link');
         $this->crud->addColumn(['name' => 'picture', 'type' => 'image', 'label' => __('Picture')]);
         $this->crud->addColumn([
             // n-n relationship (with pivot table)

@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('products', 'API\ProductController')->middleware('apiauth');
+Route::resource('category', 'API\CategoryController')->middleware('apiauth');

@@ -3,41 +3,27 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\ShopProduct;
+use App\Models\ShopCategory;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $res = \DB::connection('shop')->select(\DB::raw('
             SELECT
-            pts_product.`id_product`,
-            pts_product_lang.name as legend,
-            pts_category_lang.name AS cat,
-            pts_manufacturer.name AS brand,
-            pts_product.`price`,
             pts_category.id_category,
-            pts_category.id_parent,
-            pts_product.`weight`
-            FROM `pts_product`
-            INNER JOIN pts_product_lang ON pts_product_lang.id_product = pts_product.id_product
-            INNER JOIN pts_category ON pts_category.id_category = pts_product.id_category_default
+            pts_category_lang.name AS cat
+            FROM pts_category
             INNER JOIN pts_category_lang ON pts_category_lang.id_category = pts_category.id_category
-            LEFT JOIN pts_manufacturer ON pts_manufacturer.id_manufacturer = pts_product.id_manufacturer
             WHERE
-            pts_category.level_depth > 2
-            GROUP BY pts_product.`id_product`
+            pts_category.level_depth = 2 AND pts_category.id_category < 200
         '));
-
-        foreach ($res as $item) {
-            $item->price = intval($item->price);
-        }
 
         return response()->json($res, 200);
     }
@@ -73,13 +59,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $prd = ShopProduct::where('id_product', $id)->first();
-        $prd->timestamps = false;
-        $prd->price = $request->post('price');
-//        print_r($prd->price);
-        $prd->save(['timestamps' => false]);
-
-        return response()->json(['msg' => 'بروزرسانی قیمت انجام شد.' . $id, 'prd'=>$prd], 200);
+        //
     }
 
     /**

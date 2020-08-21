@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content=" پیدا کردن کارتریج مناسب برای پرینتر و اطلاع از مشخصات و نحوه خرید با کارتریج یاب " />
     <meta name="keywords" content="کارتریج 44a، قیمت کارتریج، پرینتر، کارتریج، خرید کارتریج، کارتریج hp">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175972244-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'UA-175972244-1');
+    </script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

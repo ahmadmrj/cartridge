@@ -107,7 +107,7 @@ class ProductController extends Controller
         if($request->post('price')) {
             $prd->price = $request->post('price');
             if($shopPrd) {
-                $shopPrd->price = $request->post('price');
+                $shopPrd->price = $request->post('price') - $prd->price;
                 $shopPrd->save(['timestamps' => false]);
             }
         }
@@ -115,7 +115,7 @@ class ProductController extends Controller
         if($request->post('wholesale_price')) {
             $prd->wholesale_price = $request->post('wholesale_price');
             if($shopPrd) {
-                $shopPrd->wholesale_price = $request->post('wholesale_price');
+                $shopPrd->wholesale_price = $request->post('wholesale_price') - $prd->wholesale_price;
                 $shopPrd->save(['timestamps' => false]);
             }
         }

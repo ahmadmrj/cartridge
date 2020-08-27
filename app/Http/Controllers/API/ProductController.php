@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\ShopProduct;
 use App\Models\ShopProductAttribute;
+use App\Models\ShopProductAttributeShop;
 use App\Models\ShopProductShop;
 use App\Models\ShopStockAvailable;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class ProductController extends Controller
         LEFT JOIN pts_attribute_lang ON pts_attribute_lang.id_attribute = pts_product_attribute_combination.id_attribute
         LEFT JOIN pts_attribute ON pts_attribute.id_attribute = pts_product_attribute_combination.id_attribute
         LEFT JOIN pts_attribute_group_lang ON pts_attribute_group_lang.id_attribute_group = pts_attribute.id_attribute_group
-        
+
         WHERE
             pts_category.level_depth > 2
         GROUP BY pts_product.`id_product`, pts_product_attribute_combination.id_product_attribute
@@ -95,27 +96,44 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $id_product_attribute = $request->post('attribute_id');
-        $shopPrd = null;
+        $shopStock = null;
+        $prdAttribute = null;
+        $shopPrdAttribute = null;
+
+        $prd = ShopProduct::where('id_product', $id)->first();
+        $shopPrd = ShopProductShop::where('id_product', $id)->first();
 
         if($id_product_attribute) {
-            $prd = ShopProductAttribute::where('id_product', $id)->where('id_product_attribute', $id_product_attribute)->first();
-        } else {
-            $prd = ShopProduct::where('id_product', $id)->first();
-            $shopPrd = ShopProductShop::where('id_product', $id)->first();
+            $prdAttribute = ShopProductAttribute::where('id_product', $id)->where('id_product_attribute', $id_product_attribute)->first();
+            $shopPrdAttribute = ShopProductAttributeShop::where('id_product', $id)->where('id_product_attribute', $id_product_attribute)->first();
         }
 
+//        Price Update
         if($request->post('price')) {
-            $prd->price = $request->post('price');
-            if($shopPrd) {
-                $shopPrd->price = $request->post('price') - $prd->price;
+            if($prdAttribute) {
+                $prdAttribute->price = $request->post('price') - $prd->price;
+                $shopPrdAttribute->price = $request->post('price') - $prd->price;
+                $prdAttribute->save(['timestamps' => false]);
+                $shopPrdAttribute->save(['timestamps' => false]);
+            } else {
+                $prd->price = $request->post('price');
+                $shopPrd->price = $request->post('price');
+                $prd->save(['timestamps' => false]);
                 $shopPrd->save(['timestamps' => false]);
             }
         }
 
+//        Whole Sale Price Update
         if($request->post('wholesale_price')) {
-            $prd->wholesale_price = $request->post('wholesale_price');
-            if($shopPrd) {
-                $shopPrd->wholesale_price = $request->post('wholesale_price') - $prd->wholesale_price;
+            if($prdAttribute) {
+                $prdAttribute->wholesale_price = $request->post('price') - $prd->wholesale_price;
+                $shopPrdAttribute->wholesale_price = $request->post('price') - $prd->wholesale_price;
+                $prdAttribute->save(['timestamps' => false]);
+                $shopPrdAttribute->save(['timestamps' => false]);
+            } else {
+                $prd->wholesale_price = $request->post('price');
+                $shopPrd->wholesale_price = $request->post('price');
+                $prd->save(['timestamps' => false]);
                 $shopPrd->save(['timestamps' => false]);
             }
         }
@@ -127,15 +145,20 @@ class ProductController extends Controller
                     ->first();
             } else {
                 $shopStock = ShopStockAvailable::where('id_product', $id)->first();
+                $prd->quantity = $request->post('quantity');
+                $prd->save(['timestamps' => false]);
             }
-            $prd->quantity = $request->post('quantity');
+
             $shopStock->quantity = $request->post('quantity');
             $shopStock->save(['timestamps' => false]);
         }
 
-        $prd->save(['timestamps' => false]);
-
-        return response()->json(['msg' => 'بروزرسانی قیمت انجام شد.' . $id], 200);
+        return response()->json([
+            'msg' => 'بروزرسانی قیمت انجام شد.' . $id,
+            'prd' => $prd,
+            'sprd' => $shopPrd,
+            'shopStack' => $shopStock
+        ], 200);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Events\ShopProductUpdate;
 use App\Http\Controllers\Controller;
 use App\Models\ShopProduct;
 use App\Models\ShopProductAttribute;
@@ -82,7 +83,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json(['msg' => 'بروزرسانی قیمت انجام شد.' . $id], 200);
     }
 
     /**
@@ -96,6 +97,8 @@ class ProductController extends Controller
     {
         $id_product_attribute = $request->post('attribute_id');
         $shopPrd = null;
+        $modifiedField = null;
+        $modifiedValue = null;
 
         if($id_product_attribute) {
             $prd = ShopProductAttribute::where('id_product', $id)->where('id_product_attribute', $id_product_attribute)->first();
@@ -105,22 +108,27 @@ class ProductController extends Controller
         }
 
         if($request->post('price')) {
-            $prd->price = $request->post('price');
+            $modifiedValue = $request->post('price');
+            $prd->price = $modifiedValue;
             if($shopPrd) {
-                $shopPrd->price = $request->post('price') - $prd->price;
+                $shopPrd->price = $modifiedValue - $prd->price;
                 $shopPrd->save(['timestamps' => false]);
             }
+            $modifiedField = 'price';
         }
 
         if($request->post('wholesale_price')) {
-            $prd->wholesale_price = $request->post('wholesale_price');
+            $modifiedValue = $request->post('wholesale_price');
+            $prd->wholesale_price = $modifiedValue;
             if($shopPrd) {
-                $shopPrd->wholesale_price = $request->post('wholesale_price') - $prd->wholesale_price;
+                $shopPrd->wholesale_price = $modifiedValue - $prd->wholesale_price;
                 $shopPrd->save(['timestamps' => false]);
             }
+            $modifiedField = 'wholesale_price';
         }
 
         if($request->post('quantity')) {
+            $modifiedValue = $request->post('quantity');
             if($id_product_attribute) {
                 $shopStock = ShopStockAvailable::where('id_product', $id)
                     ->where('id_product_attribute', $id_product_attribute)
@@ -128,12 +136,15 @@ class ProductController extends Controller
             } else {
                 $shopStock = ShopStockAvailable::where('id_product', $id)->first();
             }
-            $prd->quantity = $request->post('quantity');
-            $shopStock->quantity = $request->post('quantity');
+            $prd->quantity = $modifiedValue;
+            $shopStock->quantity = $modifiedValue;
             $shopStock->save(['timestamps' => false]);
+            $modifiedField = 'quantity';
         }
 
         $prd->save(['timestamps' => false]);
+        // register logs
+        event(new ShopProductUpdate($prd, $modifiedField, $modifiedValue));
 
         return response()->json(['msg' => 'بروزرسانی قیمت انجام شد.' . $id], 200);
     }

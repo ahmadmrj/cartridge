@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Events\ShopProductUpdate;
 use App\Http\Controllers\Controller;
 use App\Models\ShopProduct;
 use App\Models\ShopProductAttribute;

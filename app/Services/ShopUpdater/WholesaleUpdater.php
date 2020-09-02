@@ -2,7 +2,12 @@
 namespace App\Services\ShopUpdater;
 
 class WholesaleUpdater extends ShopUpdaterGeneral implements ShopUpdater {
+    public function __construct($value)
+    {
+        parent::__construct($value);
 
+        $this->modifiedField = 'wholesale_price';
+    }
 
     public function update()
     {

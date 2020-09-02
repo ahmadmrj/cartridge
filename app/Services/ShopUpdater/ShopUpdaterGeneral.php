@@ -2,6 +2,7 @@
 namespace App\Services\ShopUpdater;
 
 
+use App\Events\ShopProductUpdate;
 use App\Models\ShopProduct;
 use App\Models\ShopProductAttribute;
 use App\Models\ShopProductAttributeShop;
@@ -14,6 +15,7 @@ class ShopUpdaterGeneral implements ShopUpdater {
     public $productShop;
     public $attribute = null;
     public $attributeShop = null;
+    public $modifiedField = null;
 
     public function __construct($value)
     {
@@ -33,5 +35,9 @@ class ShopUpdaterGeneral implements ShopUpdater {
     public function update()
     {
         // TODO: Implement update() method.
+    }
+
+    public function log() {
+        event(new ShopProductUpdate($this->product, $this->attribute, $this->modifiedField, $this->value));
     }
 }

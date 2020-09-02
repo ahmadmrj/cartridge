@@ -15,5 +15,6 @@ class ShopUpdateStrategy {
     public function updateShop($id, $id_product_attribute) {
         $this->strategy->init($id, $id_product_attribute);
         $this->strategy->update();
+        $this->strategy->log();
     }
 }

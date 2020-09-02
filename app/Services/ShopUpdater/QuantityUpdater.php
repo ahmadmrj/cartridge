@@ -4,7 +4,12 @@ namespace App\Services\ShopUpdater;
 use App\Models\ShopStockAvailable;
 
 class QuantityUpdater extends ShopUpdaterGeneral implements ShopUpdater {
+    public function __construct($value)
+    {
+        parent::__construct($value);
 
+        $this->modifiedField = 'quantity';
+    }
     public function update()
     {
         if($this->attribute) {

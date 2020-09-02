@@ -15,6 +15,7 @@ class ShopProductUpdate
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $product;
+    public $attribute;
     public $modifiedFiled;
     public $modifiedValue;
     /**
@@ -22,9 +23,10 @@ class ShopProductUpdate
      *
      * @return void
      */
-    public function __construct($product, $modifiedFiled, $modifiedValue)
+    public function __construct($product, $attribute, $modifiedFiled, $modifiedValue)
     {
         $this->product = $product;
+        $this->attribute = $attribute;
         $this->modifiedFiled = $modifiedFiled;
         $this->modifiedValue = $modifiedValue;
     }

@@ -2,6 +2,12 @@
 namespace App\Services\ShopUpdater;
 
 class PriceUpdater extends ShopUpdaterGeneral implements ShopUpdater {
+    public function __construct($value)
+    {
+        parent::__construct($value);
+
+        $this->modifiedField = 'price';
+    }
 
     public function update()
     {

@@ -3,11 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\ShopProduct;
-use App\Models\ShopProductAttribute;
-use App\Models\ShopProductAttributeShop;
-use App\Models\ShopProductShop;
-use App\Models\ShopStockAvailable;
 use App\Services\ShopUpdateStrategy;
 use App\Services\UpdaterFactory;
 use Illuminate\Http\Request;

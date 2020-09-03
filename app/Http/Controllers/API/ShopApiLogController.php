@@ -8,14 +8,9 @@ use Illuminate\Http\Request;
 
 class ShopApiLogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function index()
     {
-        $res = ShopApiLog::paginate(30);
+        $res = ShopApiLog::orderByDesc('id')->paginate(30);
 
         return response()->json($res, 200);
     }

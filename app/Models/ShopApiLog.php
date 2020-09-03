@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Morilog\Jalali\CalendarUtils;
 
 class ShopApiLog extends Model
 {
@@ -15,4 +16,17 @@ class ShopApiLog extends Model
         'change_value',
         'ip_address'
     ];
+
+    public function getCreatedAtAttribute($value)
+    {
+        $reval = date('Y-m-d',strtotime($value));
+
+        $reval = CalendarUtils::strftime('H:i Y/m/d', strtotime($value));
+
+        return $reval;
+    }
+
+    public function getChangeValueAttribute($value) {
+        return number_format($value);
+    }
 }

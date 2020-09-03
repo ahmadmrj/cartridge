@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\ShopProduct;
-use App\Models\ShopProductAttribute;
-use App\Models\ShopProductAttributeShop;
-use App\Models\ShopProductShop;
-use App\Models\ShopStockAvailable;
+use App\Services\ShopUpdateStrategy;
+use App\Services\UpdaterFactory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -89,75 +86,24 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function update(Request $request, $id)
     {
+        $updater = new ShopUpdateStrategy(UpdaterFactory::selectMethodByRequest(
+            $request->post('price'),
+            $request->post('wholesale_price'),
+            $request->post('quantity')
+        ));
+
         $id_product_attribute = $request->post('attribute_id');
-        $shopStock = null;
-        $prdAttribute = null;
-        $shopPrdAttribute = null;
-
-        $prd = ShopProduct::where('id_product', $id)->first();
-        $shopPrd = ShopProductShop::where('id_product', $id)->first();
-
-        if($id_product_attribute) {
-            $prdAttribute = ShopProductAttribute::where('id_product', $id)->where('id_product_attribute', $id_product_attribute)->first();
-            $shopPrdAttribute = ShopProductAttributeShop::where('id_product', $id)->where('id_product_attribute', $id_product_attribute)->first();
-        }
-
-//        Price Update
-        if($request->post('price')) {
-            if($prdAttribute) {
-                $prdAttribute->price = $request->post('price') - $prd->price;
-                $shopPrdAttribute->price = $request->post('price') - $prd->price;
-                $prdAttribute->save(['timestamps' => false]);
-                $shopPrdAttribute->save(['timestamps' => false]);
-            } else {
-                $prd->price = $request->post('price');
-                $shopPrd->price = $request->post('price');
-                $prd->save(['timestamps' => false]);
-                $shopPrd->save(['timestamps' => false]);
-            }
-        }
-
-//        Whole Sale Price Update
-        if($request->post('wholesale_price')) {
-            if($prdAttribute) {
-                $prdAttribute->wholesale_price = $request->post('price') - $prd->wholesale_price;
-                $shopPrdAttribute->wholesale_price = $request->post('price') - $prd->wholesale_price;
-                $prdAttribute->save(['timestamps' => false]);
-                $shopPrdAttribute->save(['timestamps' => false]);
-            } else {
-                $prd->wholesale_price = $request->post('price');
-                $shopPrd->wholesale_price = $request->post('price');
-                $prd->save(['timestamps' => false]);
-                $shopPrd->save(['timestamps' => false]);
-            }
-        }
-
-        if($request->post('quantity')) {
-            if($id_product_attribute) {
-                $shopStock = ShopStockAvailable::where('id_product', $id)
-                    ->where('id_product_attribute', $id_product_attribute)
-                    ->first();
-            } else {
-                $shopStock = ShopStockAvailable::where('id_product', $id)->first();
-                $prd->quantity = $request->post('quantity');
-                $prd->save(['timestamps' => false]);
-            }
-
-            $shopStock->quantity = $request->post('quantity');
-            $shopStock->save(['timestamps' => false]);
-        }
+        $updater->updateShop($id, $id_product_attribute);
 
         return response()->json([
-            'msg' => 'بروزرسانی قیمت انجام شد.' . $id,
-            'prd' => $prd,
-            'sprd' => $shopPrd,
-            'shopStack' => $shopStock
+            'msg' => 'بروزرسانی قیمت انجام شد.' . $id
         ], 200);
     }
 

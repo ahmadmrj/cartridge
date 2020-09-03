@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,7 @@ class ShopApiLog extends Model
     protected $fillable = [
         'product_code',
         'product_name',
+        'attribute_name',
         'change_field',
         'change_value',
         'ip_address'

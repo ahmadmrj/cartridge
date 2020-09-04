@@ -86,7 +86,7 @@ class LandingController extends Controller
                     'slug'
                 )
                 ->where('slug', 'like', '%' . $term . '%')
-                ->limit(60)
+                ->limit(15)
                 ->get()
                 ->all();
 
@@ -97,7 +97,7 @@ class LandingController extends Controller
                     'slug'
                 )
                 ->where('slug', 'like', '%' . $term . '%')
-                ->limit(60)
+                ->limit(15)
                 ->get()
                 ->all();
         }

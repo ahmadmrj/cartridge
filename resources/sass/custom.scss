@@ -267,3 +267,8 @@ a:hover {
     cursor: pointer;
     margin-right: 15px;
 }
+
+.select2-results__option[role="group"] {
+    width: 50%;
+    float: right;
+}

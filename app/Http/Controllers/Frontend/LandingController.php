@@ -8,6 +8,7 @@ use App\Models\CartridgeMedia;
 use App\Models\PrinterBrand;
 use App\Models\PrinterFamily;
 use App\Models\PrinterModel;
+use App\Models\PrinterModelMedia;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Route;
@@ -60,6 +61,19 @@ class LandingController extends Controller
 
     public function cartridgeMediaList($id) {
         $images = CartridgeMedia::where('cartridge_id', $id)
+            ->get()
+            ->all();
+
+        foreach ($images as $img){
+            $img->size = \Storage::disk('public_uploads')->size($img->address);
+            $img->address = asset('uploads/'.$img->address);
+        }
+
+        return json_encode($images);
+    }
+
+    public function printerMediaList($id) {
+        $images = PrinterModelMedia::where('printer_model_id', $id)
             ->get()
             ->all();
 

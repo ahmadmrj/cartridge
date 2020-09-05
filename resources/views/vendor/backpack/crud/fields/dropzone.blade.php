@@ -98,7 +98,7 @@
                         file.previewElement.appendChild(removeButton);
                     });
 
-                    $.getJSON('/cartridge-media-list/{{$entry->id}}', function(data) {
+                    $.getJSON('/{{$field['display_route']}}/{{$entry->id}}', function(data) {
                         $.each(data, function(index, val){
                             let mockFile = { name: val.id, size: val.size };
                             myDropzone.displayExistingFile(mockFile, val.address);

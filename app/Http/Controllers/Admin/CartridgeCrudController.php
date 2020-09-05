@@ -78,7 +78,8 @@ class CartridgeCrudController extends CrudController
                 'orange' => 'Orange',
                 'photo_black' => 'Photo Black',
                 'red' => 'Red',
-                'yellow' => 'Yellow'
+                'yellow' => 'Yellow',
+                'All colors' => 'All colors'
             ]
         ]);
 
@@ -109,7 +110,8 @@ class CartridgeCrudController extends CrudController
             'mimes' => 'image/*',
             'filesize' => 1024,
             'reorder_route' => 'cart-media-reorder',
-            'delete_route' => 'cart-media-delete'
+            'delete_route' => 'cart-media-delete',
+            'display_route' => 'cartridge-media-list'
         ]);
     }
 

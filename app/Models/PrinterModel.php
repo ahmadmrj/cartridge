@@ -56,6 +56,15 @@ class PrinterModel extends Model
     public function family() {
         return $this->belongsTo('App\Models\PrinterFamily');
     }
+
+    public function medias() {
+        return $this->hasMany(
+            'App\Models\PrinterModelMedia',
+            'printer_model_id',
+            'id'
+        );
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

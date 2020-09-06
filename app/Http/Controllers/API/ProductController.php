@@ -21,13 +21,11 @@ class ProductController extends Controller
             pts_product.`id_product`,
             pts_product_lang.name as legend,
             pts_category_lang.name AS cat,
-            pts_manufacturer.name AS brand,
             CONCAT(pts_attribute_group_lang.`name`, " - ", pts_attribute_lang.name) AS combinationName,
             IF(pts_product_attribute.price != 0.000000,pts_product.`price`+pts_product_attribute.price,pts_product.`price`) AS price,
             pts_product.`wholesale_price`,
             pts_category.id_category,
             pts_category.id_parent,
-            pts_product.`weight`,
             IF(pts_product_attribute_combination.id_product_attribute IS NULL, (
                 SELECT quantity FROM pts_stock_available WHERE pts_stock_available.id_product = pts_product.id_product
             ),
@@ -35,21 +33,24 @@ class ProductController extends Controller
                 SELECT quantity FROM pts_stock_available WHERE pts_stock_available.id_product = pts_product.id_product AND pts_stock_available.id_product_attribute = pts_product_attribute_combination.id_product_attribute
             )
             ) AS quantity,
-            pts_product_attribute_combination.id_product_attribute
+            pts_product_attribute_combination.id_product_attribute,
+            IF(pts_product_attribute_combination.id_product_attribute IS NULL, crm_product_extra_info.description, crm_attribute_extra_info.description) AS description
         FROM `pts_product`
         INNER JOIN pts_product_lang ON pts_product_lang.id_product = pts_product.id_product
         INNER JOIN pts_category ON pts_category.id_category = pts_product.id_category_default
         INNER JOIN pts_category_lang ON pts_category_lang.id_category = pts_category.id_category
-        LEFT JOIN pts_manufacturer ON pts_manufacturer.id_manufacturer = pts_product.id_manufacturer
         LEFT JOIN pts_product_attribute ON pts_product_attribute.id_product = pts_product.id_product
         LEFT JOIN pts_product_attribute_combination ON pts_product_attribute_combination.id_product_attribute = pts_product_attribute.id_product_attribute
         LEFT JOIN pts_attribute_lang ON pts_attribute_lang.id_attribute = pts_product_attribute_combination.id_attribute
         LEFT JOIN pts_attribute ON pts_attribute.id_attribute = pts_product_attribute_combination.id_attribute
         LEFT JOIN pts_attribute_group_lang ON pts_attribute_group_lang.id_attribute_group = pts_attribute.id_attribute_group
+        LEFT JOIN crm_product_extra_info ON crm_product_extra_info.id_product = pts_product.id_product
+        LEFT JOIN crm_attribute_extra_info ON crm_attribute_extra_info.id_product_attribute = pts_product_attribute.id_product_attribute
 
         WHERE
             pts_category.level_depth > 2
         GROUP BY pts_product.`id_product`, pts_product_attribute_combination.id_product_attribute
+        ORDER BY pts_product.`id_product`
         '));
 
         foreach ($res as $item) {
@@ -96,7 +97,8 @@ class ProductController extends Controller
         $updater = new ShopUpdateStrategy(UpdaterFactory::selectMethodByRequest(
             $request->post('price'),
             $request->post('wholesale_price'),
-            $request->post('quantity')
+            $request->post('quantity'),
+            $request->post('description')
         ));
 
         $id_product_attribute = $request->post('attribute_id');

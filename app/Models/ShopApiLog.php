@@ -27,6 +27,16 @@ class ShopApiLog extends Model
     }
 
     public function getChangeValueAttribute($value) {
-        return number_format($value);
+        return is_numeric($value) ? number_format($value) : $value;
+    }
+    public function getChangeFieldAttribute($value) {
+        $change = [
+            'description' => 'توضیحات',
+            'price' => 'قیمت فروش',
+            'wholesale_price' => 'قیمت خرید',
+            'quantity' => 'موجودی',
+        ];
+
+        return $change[$value];
     }
 }

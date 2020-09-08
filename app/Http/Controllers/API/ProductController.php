@@ -34,7 +34,8 @@ class ProductController extends Controller
             )
             ) AS quantity,
             pts_product_attribute_combination.id_product_attribute,
-            IF(pts_product_attribute_combination.id_product_attribute IS NULL, crm_product_extra_info.description, crm_attribute_extra_info.description) AS description
+            IF(pts_product_attribute_combination.id_product_attribute IS NULL, crm_product_extra_info.description, crm_attribute_extra_info.description) AS description,
+            pts_product.active
         FROM `pts_product`
         INNER JOIN pts_product_lang ON pts_product_lang.id_product = pts_product.id_product
         INNER JOIN pts_category ON pts_category.id_category = pts_product.id_category_default

@@ -8,13 +8,13 @@ use App\Services\ShopUpdater\WholesaleUpdater;
 
 class UpdaterFactory {
     public static function selectMethodByRequest($price, $wholePrice, $quantity, $description) {
-        if($price) {
+        if(!is_null($price)) {
             return new PriceUpdater($price);
-        } elseif($wholePrice) {
+        } elseif(!is_null($wholePrice)) {
             return new WholesaleUpdater($wholePrice);
-        } elseif($quantity) {
+        } elseif(!is_null($quantity)) {
             return new QuantityUpdater($quantity);
-        } elseif($description) {
+        } elseif(!is_null($description)) {
             return new DescriptionUpdater($description);
         } else {
             throw new \Exception("Unknown Update Method");

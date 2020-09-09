@@ -4,8 +4,6 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -38,6 +36,15 @@ class ShopProductUpdate implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('product');
+        return ['shopProduct'];
+    }
+
+    public function broadcastWith() {
+        return [
+            'id_product' => $this->product->id_product,
+            'id_product_attribute' => $this->attribute ? $this->attribute->id_product_attribute : null,
+            'modifiedField' => $this->modifiedFiled,
+            'modifiedValue' => $this->modifiedValue
+        ];
     }
 }

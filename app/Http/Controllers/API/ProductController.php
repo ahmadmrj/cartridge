@@ -28,6 +28,7 @@ class ProductController extends Controller
             pts_category.id_parent,
             IF(pts_product_attribute_combination.id_product_attribute IS NULL, (
                 SELECT quantity FROM pts_stock_available WHERE pts_stock_available.id_product = pts_product.id_product
+                AND pts_stock_available.id_product_attribute=0
             ),
             (
                 SELECT quantity FROM pts_stock_available WHERE pts_stock_available.id_product = pts_product.id_product AND pts_stock_available.id_product_attribute = pts_product_attribute_combination.id_product_attribute

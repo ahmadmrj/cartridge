@@ -38,6 +38,6 @@ class ShopProductUpdate implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('product.'.$this->product->id_product);
+        return new Channel('product');
     }
 }

@@ -19,7 +19,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "morilog/jalali": "3.*"
+        "morilog/jalali": "3.*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "backpack/generators": "^2.0",

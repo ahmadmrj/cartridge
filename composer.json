@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ext-curl": "*",
         "ext-json": "*",
         "backpack/crud": "4.0.*",
         "barryvdh/laravel-elfinder": "^0.4.5",
@@ -20,7 +21,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "morilog/jalali": "3.*",
-        "ext-curl": "*"
+        "spatie/laravel-sitemap": "^5.8"
     },
     "require-dev": {
         "backpack/generators": "^2.0",

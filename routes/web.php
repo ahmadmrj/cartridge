@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,10 +62,6 @@ Route::get('elastic', 'Frontend\LandingController@elastic');
 //    echo $usr->password;
 //});
 
-//Route::get('/slg', function () {
-//    $cart = \App\Models\PrinterBrand::all();
-//    foreach ($cart as $val) {
-//        $val->slug = str_slug($val->title);
-//        $val->save();
-//    }
-//});
+Route::get('/map', function () {
+    SitemapGenerator::create('https://catridgeyab.com')->writeToFile('sitemap.xml');
+});

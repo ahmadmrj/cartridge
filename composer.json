@@ -21,7 +21,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "morilog/jalali": "3.*",
-        "spatie/laravel-sitemap": "^5.8"
+        "spatie/laravel-sitemap": "^5.8",
+        "pishran/laravel-persian-slug": "1.4"
     },
     "require-dev": {
         "backpack/generators": "^2.0",

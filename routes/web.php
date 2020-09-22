@@ -1,9 +1,12 @@
 <?php
 
+use App\models\PrinterBrand;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\SitemapGenerator;
-
+use Spatie\Sitemap\Tags\Url;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,16 +46,15 @@ Route::get('elastic', 'Frontend\LandingController@elastic');
 //});
 //
 //Route::get('/refines', function () {
-//    $carts = DB::table('cartridges')->get();
-//    foreach ($carts as $cart){
-//        if(file_exists($cart->picture)){
-//            echo $cart->picture.'<br>';
-//            \App\models\CartridgeMedia::create([
-//                'cartridge_id'=>$cart->id,
-//                'address'=> str_replace('uploads/','', $cart->picture)
-//            ]);
-//        }
-//    }
+//    die('asdf');
+//    \App\Models\Cartridge::all()->each(function ($cart) {
+//        $str = $cart->title;
+//        $cart->title = $str.'*';
+//        $cart->save();
+//        $cart->title = str_replace('*', '', $cart->title);
+//        $cart->save();
+//        echo 'asdf';
+//    });
 //});
 
 //Route::get('/usr', function () {
@@ -63,5 +65,21 @@ Route::get('elastic', 'Frontend\LandingController@elastic');
 //});
 
 Route::get('/map', function () {
-    SitemapGenerator::create('https://catridgeyab.com')->writeToFile('sitemap.xml');
+    $sitemap = Sitemap::create()->add(Url::create('/'));
+
+    PrinterBrand::all()->each(function (PrinterBrand $brand) use ($sitemap) {
+        $sitemap->add(Url::create("/cartridges?brand={$brand->slug}")
+            ->setLastModificationDate(Carbon::yesterday())
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.1));
+    });
+
+    \App\Models\Cartridge::all()->each(function ($cart) use ($sitemap) {
+        $sitemap->add(Url::create("/cartridge/{$cart->slug}")
+            ->setLastModificationDate(Carbon::yesterday())
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.9));
+    });
+
+    $sitemap->writeToFile('sitemap.xml');
 });

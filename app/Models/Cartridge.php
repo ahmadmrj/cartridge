@@ -5,6 +5,8 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Pishran\LaravelPersianSlug\HasPersianSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * App\Models\Cartridge
@@ -37,7 +39,7 @@ use Illuminate\Support\Str;
 class Cartridge extends Model
 {
     use CrudTrait;
-
+    use HasPersianSlug;
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
@@ -68,7 +70,12 @@ class Cartridge extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

@@ -50,7 +50,7 @@ class ProductController extends Controller
         LEFT JOIN crm_attribute_extra_info ON crm_attribute_extra_info.id_product_attribute = pts_product_attribute.id_product_attribute
 
         WHERE
-            pts_category.level_depth > 2
+            pts_category.level_depth > 2 AND pts_product.active=1
         GROUP BY pts_product.`id_product`, pts_product_attribute_combination.id_product_attribute
         ORDER BY pts_product.`id_product`
         '));

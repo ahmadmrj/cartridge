@@ -61,7 +61,7 @@ class CategoryController extends Controller
             INNER JOIN pts_category_lang ON pts_category_lang.id_category = pts_category.id_category
             WHERE
             pts_category.level_depth > 0
-            ORDER BY pts_category.id_parent
+            ORDER BY pts_category.id_parent, pts_category.id_category
             '));
 
         return $res;

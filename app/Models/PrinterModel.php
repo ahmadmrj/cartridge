@@ -38,7 +38,15 @@ class PrinterModel extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-     protected $fillable = ['title', 'family_id'];
+     protected $fillable = [
+         'title',
+         'family_id',
+         'technical_title',
+         'buy_link',
+         'key_words',
+         'seo_title',
+         'description'
+     ];
     // protected $hidden = [];
     // protected $dates = [];
 

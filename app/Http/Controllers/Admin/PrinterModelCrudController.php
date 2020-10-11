@@ -41,12 +41,14 @@ class PrinterModelCrudController extends CrudController
             'model' => "App\Models\PrinterFamily", // foreign key model
         ]);
         $this->crud->addColumn(['name' => 'buy_link', 'type' => 'text', 'label' => __('Buy Link')]);
-        $this->crud->addColumn([
-            'name' => 'address',
-            'type' => 'relimage',
-            'label' => __('Picture'),
-            'rel' => 'medias',
-        ]);
+//        $this->crud->addColumn([
+//            'name' => 'address',
+//            'type' => 'relimage',
+//            'label' => __('Picture'),
+//            'rel' => 'medias',
+//        ]);
+
+        if (!$this->request->has('order')) { $this->crud->orderBy('buy_link', 'DESC'); }
     }
 
     protected function setupCreateOperation()

@@ -5,18 +5,18 @@
         <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">خانه</a></li>
-            <li class="breadcrumb-item"><a href="{{ URL::to('/cartridges') }}">کارتریج ها</a></li>
-            <li class="breadcrumb-item active">{{$cartridge->title}}</li>
+            <li class="breadcrumb-item"><a href="{{ URL::to('/cartridges') }}">پرینتر ها</a></li>
+            <li class="breadcrumb-item active">{{$printer->title}}</li>
         </ol>
         </nav>
         <div class="row">
             <div class="col-md-5">
-                @if(file_exists($cartridge->_picture) or isset($cartridge->medias[0]))
+                @if(file_exists($printer->_picture) or isset($printer->medias[0]))
                 <div id="carouselExampleCaptions" class="carousel slide carousel-thumbnails" data-ride="carousel">
                     <div class="carousel-inner">
-                        @foreach($cartridge->medias as $key => $media)
+                        @foreach($printer->medias as $key => $media)
                         <div class="carousel-item @if($key==0) active @endif">
-                            <img src="{{ URL::asset('uploads/'.$media->address) }}" class="d-block w-100" alt="{{$cartridge->slug}}_{{$key}}">
+                            <img src="{{ URL::asset('uploads/'.$media->address) }}" class="d-block w-100" alt="{{$printer->slug}}_{{$key}}">
                         </div>
                         @endforeach
                     </div>
@@ -29,7 +29,7 @@
                         <span class="sr-only">بعدی</span>
                     </a>
                     <ol class="carousel-indicators">
-                        @foreach($cartridge->medias as $key => $media)
+                        @foreach($printer->medias as $key => $media)
                             <li data-target="#carouselExampleCaptions" data-slide-to="{{$key}}"
                                 @if($key==0) class="active" @endif
                             >
@@ -42,8 +42,8 @@
                 @else
                     <img class="img-fluid  rounded img-thumbnail" width="100%" src="{{ URL::asset('/images/no_img.png') }}">
                 @endif
-                @if($cartridge->buy_link)
-                    <a target="_blank" href="{{ $cartridge->buy_link }}" class="btn btn-success w-100">
+                @if($printer->buy_link)
+                    <a target="_blank" href="{{ $printer->buy_link }}" class="btn btn-success w-100">
                         <i class="fa fa-shopping-cart"></i>
                         خرید
                     </a>
@@ -56,17 +56,15 @@
             <div class="col-md-7" style="line-height: 35px">
                 <div class="top-brands">
                     <ul class="pr-0">
-                        <li><a href="{{ URL::to('/cartridges?brand='.$cartridge->printers[0]->family->brand->slug) }}" id="tb_{{$cartridge->printers[0]->family->brand->slug}}" class="mr-0"></a></li>
+                        <li><a href="{{ URL::to('/cartridges?brand='.$printer->family->brand->slug) }}" id="tb_{{$printer->family->brand->slug}}" class="mr-0"></a></li>
                     </ul>
                 </div>
-                <h4>{{ $cartridge->title }}</h4>
-                <div class="text-bold"> عنوان فنی: {{ $cartridge->technical_title }}</div>
-                <div class="text-bold"> رنگ: {{ $cartridge->color }}</div>
-                <div class="text-bold"> تعداد صفحه: {{ $cartridge->page_yield }}</div>
-                <div class="text-bold"> پرینترهای سازگار: </div>
+                <h4>{{ $printer->title }}</h4>
+                <div class="text-bold"> عنوان فنی: {{ $printer->technical_title }}</div>
+                <div class="text-bold"> کارتریج ها: </div>
                 <ul>
-                    @foreach($cartridge->printers as $printer)
-                        <li><a href="{{ URL::to('/printer/'.str_slug($printer->title)) }}"> {{ $printer->title }} </a></li>
+                    @foreach($printer->cartridges as $cartridge)
+                        <li><a href="{{ URL::to('/cartridge/'.$cartridge->slug) }}"> {{ $cartridge->title }} </a></li>
                     @endforeach
                 </ul>
             </div>

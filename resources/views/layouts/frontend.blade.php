@@ -155,7 +155,7 @@
                         return state.text;
                     } else {
                         if(state.type == 'printer') {
-                            document.location = '/cartridges?printer='+ state.slug;
+                            document.location = '/printer/'+ state.slug;
                         } else {
                             document.location = '/cartridge/'+ state.slug;
                         }

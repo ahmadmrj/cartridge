@@ -73,6 +73,15 @@ class PrinterModel extends Model
         );
     }
 
+    public function cartridges() {
+        return $this->belongsToMany(
+            'App\Models\Cartridge',
+            'printer_cartridge',
+            'printer_id',
+            'cartridge_id'
+        );
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -12,6 +12,13 @@ class PriceUpdater extends ShopUpdaterGeneral implements ShopUpdater {
     public function update()
     {
         if($this->attribute) {
+            if($this->product->price < 5 && $this->value > 0) {
+                $this->product->price = 4;
+                $this->productShop->price = 4;
+                $this->product->save();
+                $this->productShop->save();
+            }
+
             $this->attribute->price = $this->value - $this->product->price;
             $this->attributeShop->price = $this->value - $this->product->price;
             $this->attribute->save(['timestamps' => false]);

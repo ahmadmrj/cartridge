@@ -14,20 +14,34 @@
 @endsection
 
 @section('cartridge-items')
-    <section class="page-section cartridge" id="cartridge">
+    <section class="page-section cartridge pb-2" id="cartridge">
         <div class="container">
             <!-- cartridge Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">کارتریج ها</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
             </div>
             <!-- cartridge Grid Items-->
             <div class="row rtl" id="cartridge-grid-items">
             @foreach($cartridgeList as $cartridge)
                 <x-cartridge :cartData="$cartridge" />
+            @endforeach
+            </div>
+        </div>
+    </section>
+    <section class="page-section cartridge pt-0" id="cartridge">
+        <div class="container">
+            <!-- cartridge Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">پرینترها</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- cartridge Grid Items-->
+            <div class="row rtl" id="cartridge-grid-items">
+            @foreach($printerList as $printer)
+                <x-printer :printerData="$printer" />
             @endforeach
             </div>
         </div>

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Pishran\LaravelPersianSlug\HasPersianSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * App\Models\PrinterModel
@@ -27,7 +29,7 @@ use Illuminate\Database\Eloquent\Model;
 class PrinterModel extends Model
 {
     use CrudTrait;
-
+    use HasPersianSlug;
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
@@ -55,7 +57,12 @@ class PrinterModel extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

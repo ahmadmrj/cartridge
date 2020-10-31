@@ -66,7 +66,7 @@
                 <div class="text-bold"> پرینترهای سازگار: </div>
                 <ul>
                     @foreach($cartridge->printers as $printer)
-                        <li><a href="{{ URL::to('/printer/'.str_slug($printer->title)) }}"> {{ $printer->title }} </a></li>
+                        <li><a href="{{ URL::to('/printer/'.$printer->slug) }}"> {{ $printer->title }} </a></li>
                     @endforeach
                 </ul>
             </div>

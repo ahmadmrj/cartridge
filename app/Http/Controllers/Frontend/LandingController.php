@@ -23,7 +23,13 @@ class LandingController extends Controller
             ->limit(8)
             ->get();
 
-            return view('frontend.landing', compact('brands', 'cartridgeList'));
+        $printerList = PrinterModel::with('medias')
+            ->whereNotNull(['buy_link'])
+            ->where('buy_link','!=', '')
+            ->limit(8)
+            ->get();
+
+            return view('frontend.landing', compact('brands', 'cartridgeList', 'printerList'));
     }
 
     public function familyList($slug) {

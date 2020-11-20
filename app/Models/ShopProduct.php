@@ -10,4 +10,9 @@ class ShopProduct extends Model
     protected $table = 'pts_product';
     protected $primaryKey = 'id_product';
     public $timestamps = false;
+
+    public function suppliers()
+    {
+        return $this->morphToMany(ShopSupplier::class, 'supplierable');
+    }
 }

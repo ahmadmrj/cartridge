@@ -7,6 +7,7 @@ use App\Models\ShopProduct;
 use App\Models\ShopProductAttribute;
 use App\Models\ShopProductAttributeShop;
 use App\Models\ShopProductShop;
+use http\Exception\RuntimeException;
 
 class ShopUpdaterGeneral implements ShopUpdater {
 
@@ -38,6 +39,11 @@ class ShopUpdaterGeneral implements ShopUpdater {
     }
 
     public function log() {
-        event(new ShopProductUpdate($this->product, $this->attribute, $this->modifiedField, $this->value));
+        try {
+            event(new ShopProductUpdate($this->product, $this->attribute, $this->modifiedField, $this->value));
+        } catch (RuntimeException $e) {
+            // Take it easy if socket not working :D
+            return true;
+        }
     }
 }

@@ -21,5 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('customer', 'API\CrmCustomersController')->middleware('apiauth');
 Route::resource('products', 'API\ProductController')->middleware('apiauth');
 Route::resource('category', 'API\CategoryController')->middleware('apiauth');
+Route::resource('supplier', 'API\SupplierController')->middleware('apiauth');
 Route::resource('apilog', 'API\ShopApiLogController')->middleware('apiauth');
 Route::post('auth', 'API\AuthController@index');

@@ -24,3 +24,5 @@ Route::resource('category', 'API\CategoryController')->middleware('apiauth');
 Route::resource('supplier', 'API\SupplierController')->middleware('apiauth');
 Route::resource('apilog', 'API\ShopApiLogController')->middleware('apiauth');
 Route::post('auth', 'API\AuthController@index');
+Route::post('supplierable', 'API\SupplierController@assign')->middleware('apiauth');
+Route::delete('supplierable/{product_id}/{attribute_id}/{supplier}', 'API\SupplierController@detach')->middleware('apiauth');

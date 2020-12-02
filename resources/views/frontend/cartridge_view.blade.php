@@ -62,13 +62,30 @@
                 <h4>{{ $cartridge->title }}</h4>
                 <div class="text-bold"> عنوان فنی: {{ $cartridge->technical_title }}</div>
                 <div class="text-bold"> رنگ: {{ $cartridge->color }}</div>
-                <div class="text-bold"> تعداد صفحه: {{ $cartridge->page_yield }}</div>
+                <div class="text-bold">
+                    تعداد صفحه:
+                    @if($cartridge->page_yield == 0) نامشخص
+                    @else
+                    {{ $cartridge->page_yield }}
+                    @endif
+                </div>
                 <div class="text-bold"> پرینترهای سازگار: </div>
-                <ul>
+                <div class="mt-3 row">
                     @foreach($cartridge->printers as $printer)
-                        <li><a href="{{ URL::to('/printer/'.$printer->slug) }}"> {{ $printer->title }} </a></li>
+                        <div class="col-sm-12 col-md-6 mt-1">
+                            @if(isset($printer->medias[0]))
+                                @if(file_exists('uploads/'.$printer->medias[0]->address))
+                                    <img src="{{ URL::asset('uploads/'.$printer->medias[0]->address) }}" alt="" width="45"/>
+                                @else
+                                    <img src="{{ URL::asset('/images/no_img_printer.png') }}" alt="" width="45" />
+                                @endif
+                            @else
+                                <img class="img-fluid" src="{{ URL::asset('/images/no_img_printer.png') }}" alt="" width="45" />
+                            @endif
+                            <a href="{{ URL::to('/printer/'.$printer->slug) }}"> {{ $printer->title }} </a>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
     </div>

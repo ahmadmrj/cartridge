@@ -32,7 +32,13 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $info = ShopSupplier::create([
-            'supplier_title' => $request->post('title')
+            'supplier_title' => $request->post('title'),
+            'tell' => $request->post('tell'),
+            'mobile' => $request->post('mobile'),
+            'address' => $request->post('address'),
+            'website' => $request->post('website'),
+            'card' => $request->post('card'),
+            'description' => $request->post('description')
         ]);
 
         $info->save(['timestamps' => false]);
@@ -60,7 +66,17 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $info = ShopSupplier::where('id', $id)->update([
+            'supplier_title' => $request->post('title'),
+            'tell' => $request->post('tell'),
+            'mobile' => $request->post('mobile'),
+            'address' => $request->post('address'),
+            'website' => $request->post('website'),
+            'card' => $request->post('card'),
+            'description' => $request->post('description')
+        ]);
+
+        return response()->json([], 200);
     }
 
     /**
@@ -74,7 +90,7 @@ class SupplierController extends Controller
         $supplier = ShopSupplier::find($id);
 
         if($supplier->has('products') || $supplier->has('attributes')) {
-            return response()->json(['msg' => 'انجام عملیات ممکن نیست.'], 409);
+            return response()->json(['msg' => 'انجام عملیات ممکن نیست. محصول مرتبط با این تامین کننده وجود دارد.'], 500);
         } else {
             $supplier->delete();
             return response()->json($supplier, 200);

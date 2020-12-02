@@ -8,7 +8,7 @@ class ShopSupplier extends Model
 {
     protected $connection = 'shop';
     protected $table = 'crm_supplier';
-    protected $fillable = ['supplier_title'];
+    protected $fillable = ['supplier_title','tell','mobile','address','website','card','description'];
     public $timestamps = false;
 
     /**

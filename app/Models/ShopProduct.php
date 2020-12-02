@@ -48,7 +48,8 @@ class ShopProduct extends Model
         LEFT JOIN crm_attribute_extra_info ON crm_attribute_extra_info.id_product_attribute = pts_product_attribute.id_product_attribute
         LEFT JOIN supplierables ON supplierables.supplierable_id = (case when pts_product_attribute_combination.id_product_attribute is null
             THEN pts_product.`id_product` ELSE pts_product_attribute_combination.id_product_attribute END
-        )
+        ) AND supplierables.supplierable_type LIKE (case when pts_product_attribute_combination.id_product_attribute is null
+            THEN "%ShopProduct" ELSE "%ShopProductAttribute" END)
         LEFT JOIN crm_supplier on crm_supplier.id = supplierables.shop_supplier_id
         WHERE
             pts_category.level_depth > 2 AND pts_product.active=1 '.$extraWhere.'

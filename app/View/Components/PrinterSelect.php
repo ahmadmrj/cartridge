@@ -43,13 +43,19 @@ class PrinterSelect extends Component
                 $query->where('slug', $this->selected);
             })->get()->all();
 
-            $this->selectedFamily = $families[0]->id;
+            if(!$this->selectedFamily) {
+                $this->selectedFamily = $families[0]->id;
+            }
         }
 
         if(!is_null($this->selectedFamily)) {
             $printers = PrinterModel::whereHas('family', function($query) {
                 $query->where('id', $this->selectedFamily);
             })->get()->all();
+
+            if(!$this->selectedPrinter) {
+                $this->selectedPrinter = $printers[0]->id;
+            }
         }
 
         return view('components.printer-select', compact('families', 'printers'));

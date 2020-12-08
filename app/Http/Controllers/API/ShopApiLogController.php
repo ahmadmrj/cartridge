@@ -8,9 +8,15 @@ use Illuminate\Http\Request;
 
 class ShopApiLogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $res = ShopApiLog::orderByDesc('id')->paginate(30);
+        $query = ShopApiLog::orderByDesc('id');
+
+        if($request->get('product_name')) {
+            $query->where('product_name', 'like', '%'.$request->get('product_name').'%');
+        }
+
+        $res = $query->paginate(30);
 
         return response()->json($res, 200);
     }

@@ -89,7 +89,7 @@ class SupplierController extends Controller
     {
         $supplier = ShopSupplier::find($id);
 
-        if($supplier->has('products') || $supplier->has('attributes')) {
+        if(count($supplier->products) || count($supplier->attributes)) {
             return response()->json(['msg' => 'انجام عملیات ممکن نیست. محصول مرتبط با این تامین کننده وجود دارد.'], 500);
         } else {
             $supplier->delete();

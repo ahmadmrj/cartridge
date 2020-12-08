@@ -17,7 +17,8 @@ use stdClass;
 class LandingController extends Controller
 {
     public function index() {
-        $brands = PrinterBrand::all();
+        // except dell and copystar
+        $brands = PrinterBrand::whereNotIn('id',[4,5])->get();
         $cartridgeList = Cartridge::has('medias')
             ->whereNotNull(['buy_link'])
             ->limit(8)

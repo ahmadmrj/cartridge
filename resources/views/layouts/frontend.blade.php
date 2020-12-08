@@ -109,18 +109,30 @@
             <!-- Footer Social Icons-->
             <div class="col-lg-4 mb-5 mb-lg-0">
                 <h4 class="mb-4">ما را دنبال کنید</h4>
-                <a class="btn btn-outline-light btn-social mx-1" href="#">
+                <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/Asak-System-326707104126911/">
                     <i class="fab fa-fw fa-facebook-f"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#"><i class="fab fa-fw fa-twitter"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#"><i class="fab fa-fw fa-dribbble"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://twitter.com/AsakSystem">
+                    <i class="fab fa-fw fa-twitter"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://www.instagram.com/asaksystem/">
+                    <i class="fab fa-fw fa-instagram"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://telegram.me/asaksystem">
+                    <i class="fab fa-fw fa-telegram"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://www.pinterest.com/asaksystem/">
+                    <i class="fab fa-fw fa-pinterest"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://www.youtube.com/channel/UCohxdWCHC9vFxKyQBpPpE-Q">
+                    <i class="fab fa-fw fa-youtube"></i>
+                </a>
             </div>
             <!-- Footer About Text-->
             <div class="col-lg-4">
                 <h4 class="mb-4">با ما در تماس باشید</h4>
                 <p class="lead mb-0">
                     021-88865330 <br>
-                    <a href="mailto:asaksys@gmailcom">asaksys@gmailcom</a>
+                    <a href="mailto:asaksys@gmail.com">asaksys@gmail.com</a>
                 </p>
             </div>
         </div>

@@ -62,11 +62,23 @@
                 <h4>{{ $printer->title }}</h4>
                 <div class="text-bold"> عنوان فنی: {{ $printer->technical_title }}</div>
                 <div class="text-bold"> کارتریج ها: </div>
-                <ul>
+                <div class="mt-3 row">
                     @foreach($printer->cartridges as $cartridge)
-                        <li><a href="{{ URL::to('/cartridge/'.$cartridge->slug) }}"> {{ $cartridge->title }} </a></li>
+                        <div class="col-sm-12 col-md-6 mt-1">
+                            @if(isset($cartridge->medias[0]))
+                                @if(file_exists('uploads/'.$cartridge->medias[0]->address))
+                                    <img src="{{ URL::asset('uploads/'.$cartridge->medias[0]->address) }}" alt="" width="45"/>
+                                @else
+                                    <img class="img-fluid" src="{{ URL::asset('/images/no_cart.png') }}" alt="" width="45" />
+                                @endif
+                            @else
+{{--                                <i class="fas fa-paint-roller"></i>--}}
+                                <img class="img-fluid" src="{{ URL::asset('/images/no_cart.png') }}" alt="" width="45" />
+                            @endif
+                            <a href="{{ URL::to('/cartridge/'.$cartridge->slug) }}"> {{ $cartridge->title }} </a>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
     </div>

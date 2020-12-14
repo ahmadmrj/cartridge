@@ -41,8 +41,17 @@ class LandingController extends Controller
         return json_encode($families);
     }
 
-    public function modelList($id) {
-        $models = PrinterModel::where('family_id', $id)->get();
+    public function modelList(Request $request) {
+        $family = $request->get('family');
+        $brand = $request->get('brand');
+        
+        if($family) {
+            $models = PrinterModel::where('family_id', $family)->get();
+        } else {
+            $models = PrinterModel::whereHas('family.brand', function($q) use($brand) {
+                $q->whereSlug($brand);
+            })->get();
+        }
 
         return json_encode($models);
     }

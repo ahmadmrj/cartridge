@@ -15,6 +15,12 @@ class ShopApiLogController extends Controller
         if($request->get('product_name')) {
             $query->where('product_name', 'like', '%'.$request->get('product_name').'%');
         }
+        if($request->get('attribute_name')) {
+            $query->where('attribute_name', 'like', '%'.$request->get('attribute_name').'%');
+        }
+        if($request->get('change_field')) {
+            $query->where('change_field', 'like', '%'.$request->get('change_field').'%');
+        } 
 
         $res = $query->paginate(30);
 

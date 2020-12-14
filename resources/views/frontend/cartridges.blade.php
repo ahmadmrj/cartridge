@@ -17,6 +17,12 @@
                     :selected-printer="$printer_slug"
                     label="filter"
                 />
+                <div class="form-check float-left">
+                    <input type="checkbox" class="form-check-input" id="available-check" name="available-check"
+                        @if($available) checked="checked" @endif
+                    >
+                    <label for="available-check">موجود در فروشگاه</label>
+                </div>
                 <button class="btn btn-info">
                     <i class="fa fa-search"></i>
                     جستجو
@@ -29,7 +35,14 @@
             @endforeach
         </div>
         <div class="row">
-            {{ $carts->links() }}
+            <div class="col">
+                {{ $carts->links() }} 
+            </div>
+            <div class="col d-flex text-muted align-items-center">
+                تعداد کل: 
+                {{ $carts->total() }} 
+                رکورد
+            </div>
         </div>
     </div>
 @endsection

@@ -23,6 +23,7 @@
             @endif" id="family-label">@if($label=='landing')۲.@endif خانواده پرینتر</label>
             <select class="form-control" id="printer-family" name="family">
                 @if($families)
+                    @if(!$selectedFamily) <option value="" selected>لطفا انتخاب کنید...</option> @endif
                     @foreach($families as $family)
                         <option value="{{ $family->id }}" @if($family->id == $selectedFamily) selected @endif>{{ $family->title }}</option>
                     @endforeach
@@ -38,6 +39,7 @@
             @endif" id="model-label">@if($label=='landing')۳.@endif مدل پرینتر</label>
             <select class="form-control" id="printer-model" name="printer">
                 @if($printers)
+                    @if(!$selectedPrinter) <option value="" selected>لطفا انتخاب کنید...</option> @endif
                     @foreach($printers as $printer)
                         <option value="{{ $printer->slug }}" @if($printer->slug == $selectedPrinter) selected @endif>{{ $printer->title }}</option>
                     @endforeach
@@ -51,7 +53,7 @@
     <script>
         $(document).ready(function () {
             $('#brand-select, #printer-family, #printer-model').select2();
-            @if(is_null($selectedFamily))
+            @if(is_null($selected))
                 $('#printer-model').prop('disabled', true);
             @endif
             @if(is_null($selected))
@@ -69,11 +71,19 @@
                     familySelect.prop('disabled', false);
                     familyLabel.addClass('text-bold');
                     familyLabel.removeClass('text-inactive');
-                }, 'json')
+                }, 'json');
+
+                getModels(0, $(this).val());
             });
 
             $('#printer-family').change(function () {
-                $.get('model-list/' + $(this).val(), function (data) {
+                getModels($(this).val(), 0);
+            });
+        });
+
+        function getModels($family=0, $brand=0) {
+            let url = 'model-list?family=' + $family + '&brand=' + $brand;
+            $.get(url, function (data) {
                     let modelSelect = $('select[name="printer"]');
                     let modelLabel = $('#model-label');
                     modelSelect.empty();
@@ -85,7 +95,6 @@
                     modelLabel.addClass('text-bold');
                     modelLabel.removeClass('text-inactive');
                 }, 'json')
-            });
-        });
+        }
     </script>
 @endsection

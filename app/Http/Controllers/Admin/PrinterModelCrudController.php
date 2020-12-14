@@ -119,7 +119,26 @@ class PrinterModelCrudController extends CrudController
         $this->crud->set('show.setFromDb', false);
 
         $this->crud->addColumn('title');
+        $this->crud->addColumn(['name'=>'technical_title', 'type'=>'text', 'label'=>'عنوان فنی']);
+        $this->crud->addColumn([
+            'name'  => 'family',
+            'type'  => 'select',
+            'label' => __('printer family'),
+            'entity' => 'family',
+            'attribute' => 'title',
+        ]);
         $this->crud->addColumn('buy_link');
+        $this->crud->addColumn(['name'=>'seo_title', 'type'=>'text', 'label'=>"عنوان جستجو (سئو)"]);
+        $this->crud->addColumn(['name'=>'key_words', 'type'=>'text', 'label'=> "کلمات کلیدی (سئو)"]);
+        $this->crud->addColumn([
+            // n-n relationship (with pivot table)
+            'label' => __("Cartridges"), // Table column heading
+            'type' => "select_multiple",
+            'name' => 'cartridges', // the method that defines the relationship in your Model
+            'entity' => 'cartridges', // the method that defines the relationship in your Model
+            'attribute' => "slug", // foreign key attribute that is shown to user
+            'model' => "App\Models\Cartridge", // foreign key model
+        ]);
         $this->crud->addColumn(['name' => 'picture', 'type' => 'image', 'label' => __('Picture')]);
     }
 }

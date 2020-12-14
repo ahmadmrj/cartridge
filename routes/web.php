@@ -20,7 +20,7 @@ use Spatie\Sitemap\Tags\Url;
 
 Route::get('/', 'Frontend\LandingController@index');
 Route::get('family-list/{id}', 'Frontend\LandingController@familyList');
-Route::get('model-list/{id}', 'Frontend\LandingController@modelList');
+Route::get('model-list', 'Frontend\LandingController@modelList');
 Route::get('cartridge/{title}', 'Frontend\CartridgeController@view');
 Route::get('printer/{title}', 'Frontend\PrinterController@view');
 Route::get('cartridges', 'Frontend\CartridgeController@index');

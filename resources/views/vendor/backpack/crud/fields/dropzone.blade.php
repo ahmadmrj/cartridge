@@ -102,7 +102,7 @@
                     $.getJSON('/{{$field['display_route']}}/{{$entry->id}}', function(data) {
                         $.each(data, function(index, val){
                             console.log(val);
-                            let mockFile = { name: val.id, path: val.pure_address, size: val.size, isDefault: val.default};
+                            let mockFile = { name: val.id, path: val.pure_address, size: val.size, isDefault: val.is_default};
                             myDropzone.displayExistingFile(mockFile, val.address);
                         });
                     });

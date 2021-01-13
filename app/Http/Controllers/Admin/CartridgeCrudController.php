@@ -155,7 +155,7 @@ class CartridgeCrudController extends CrudController
     }
 
     public function DefaultMedia(Request $request, $id) {
-        CartridgeMedia::where('cartridge_id', $id)->update(['default' => 0]);
+        CartridgeMedia::where('cartridge_id', $id)->update(['is_default' => 0]);
 
         $img = CartridgeMedia::where('cartridge_id', $id)
             ->where('address', 'like', '%'.$request->post('image_id'))

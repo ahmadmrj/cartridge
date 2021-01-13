@@ -95,7 +95,7 @@ class Cartridge extends Model
             'App\Models\CartridgeMedia',
             'cartridge_id',
             'id'
-        );
+        )->orderBy('default', 'DESC');
     }
 
     public function tags() {

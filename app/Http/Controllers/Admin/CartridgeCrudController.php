@@ -111,6 +111,7 @@ class CartridgeCrudController extends CrudController
             'filesize' => 1024,
             'reorder_route' => 'cart-media-reorder',
             'delete_route' => 'cart-media-delete',
+            'default_route' => 'cart-media-default',
             'display_route' => 'cartridge-media-list'
         ]);
     }
@@ -151,5 +152,19 @@ class CartridgeCrudController extends CrudController
         \Storage::disk('public_uploads')->delete($img->address);
 
         $img->delete();
+    }
+
+    public function DefaultMedia(Request $request, $id) {
+        CartridgeMedia::where('cartridge_id', $id)->update(['default' => 0]);
+
+        $img = CartridgeMedia::where('cartridge_id', $id)
+            ->where('address', 'like', '%'.$request->post('image_id'))
+            ->first();
+
+        $img->default = 1;
+
+        $img->save();
+
+        return json_encode(['result' => 'ok']);
     }
 }

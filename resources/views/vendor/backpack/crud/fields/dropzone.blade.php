@@ -1,10 +1,12 @@
 <div class="form-group col-md-12">
+    <form method="post">
     <strong>{{ $field['label'] }}</strong> <br>
     <div class="dropzone sortable dz-clickable sortable">
         <div class="dz-message">
             Drop files here or click to upload.
         </div>
     </div>
+    </form>
 </div>
 
 @if ($crud->checkIfFieldIsFirstOfItsType($field, $fields))
@@ -52,25 +54,14 @@
                     $(file.previewElement).find('.dz-error-message').remove();
                     $(file.previewElement).remove();
                 },
-                success : function(file, status) {
 
-                    // clear the images in the dropzone
-                    // $('.dropzone').empty();
-                    // console.log(status);
-                    // repopulate the dropzone with all images (new and old)
-                    $.each(status.images, function(key, image_path) {
-                        $('.dropzone').append('<div class="dz-preview" data-id="'+key+'" data-path="'+image_path+'"><img class="dropzone-thumbnail" src="{{ url('') }}/'+image_path+'" /><a class="dz-remove" href="javascript:void(0);" data-remove="'+key+'" data-path="'+image_path+'">Remove file</a></div>');
-                    });
-
-                    var notification_type;
-
-                },
                 init: function() {
                     let myDropzone = this;
 
                     this.on("addedfile", function(file) {
-
+                        var isChecked = file.isDefault == 1 ? 'checked' : '';
                         var removeButton = Dropzone.createElement('<a href="javascript:void(0);">حذف فایل</a>');
+                        var defaultIndicator = Dropzone.createElement('<div class="mx-2"><input type="radio" name="default_img" value="" ' + isChecked + '><span> پیش فرض  </span><div>');
 
                         // Capture the Dropzone instance as closure.
                         var _this = this;
@@ -88,19 +79,30 @@
                                 url: '{{ url($crud->route.'/'.$entry->id.'/'.$field['delete_route']) }}',
                                 type: 'POST',
                                 data: {
-                                    image_id: file.name,
-                                    image_path: file.path
+                                    image_id: file.path
+                                },
+                            });
+                        });
+
+                        defaultIndicator.addEventListener("click", function(e) {
+                            $.ajax({
+                                url: '{{ url($crud->route.'/'.$entry->id.'/'.$field['default_route']) }}',
+                                type: 'POST',
+                                data: {
+                                    image_id: file.path
                                 },
                             });
                         });
 
                         // Add the button to the file preview element.
                         file.previewElement.appendChild(removeButton);
+                        file.previewElement.appendChild(defaultIndicator);
                     });
 
                     $.getJSON('/{{$field['display_route']}}/{{$entry->id}}', function(data) {
                         $.each(data, function(index, val){
-                            let mockFile = { name: val.id, size: val.size };
+                            console.log(val);
+                            let mockFile = { name: val.id, path: val.pure_address, size: val.size, isDefault: val.default};
                             myDropzone.displayExistingFile(mockFile, val.address);
                         });
                     });

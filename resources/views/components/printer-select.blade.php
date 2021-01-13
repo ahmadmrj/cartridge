@@ -23,7 +23,7 @@
             @endif" id="family-label">@if($label=='landing')۲.@endif خانواده پرینتر</label>
             <select class="form-control" id="printer-family" name="family">
                 @if($families)
-                    @if(!$selectedFamily) <option value="" selected>لطفا انتخاب کنید...</option> @endif
+                    @if(!$selectedFamily) <option value="" selected>لطفا انتخاب کنید... (اختیاری)</option> @endif
                     @foreach($families as $family)
                         <option value="{{ $family->id }}" @if($family->id == $selectedFamily) selected @endif>{{ $family->title }}</option>
                     @endforeach
@@ -64,7 +64,7 @@
                     let familySelect = $('select[name="family"]');
                     let familyLabel = $('#family-label');
                     familySelect.empty();
-                    familySelect.append('<option value="" selected> لطفا انتخاب کنید... </option>');
+                    familySelect.append('<option value="" selected> لطفا انتخاب کنید... (اختیاری) </option>');
                     $.each(data, function (key, value) {
                         familySelect.append('<option value="' + value.id + '">' + value.title + '</option>');
                     });

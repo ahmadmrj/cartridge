@@ -8,7 +8,7 @@ class CartridgeMedia extends Model
 {
     protected $table = 'cartridge_medias';
 //    protected $attributes = ['picture'];
-    protected $fillable = ['cartridge_id', 'address'];
+    protected $fillable = ['cartridge_id', 'address', 'default'];
 
 //    public function getPictureAttribute() {
 //        return '<img src="$this->address" />';

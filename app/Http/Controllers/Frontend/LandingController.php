@@ -17,9 +17,10 @@ use stdClass;
 class LandingController extends Controller
 {
     public function index() {
-        // except dell and copystar
-        $brands = PrinterBrand::whereNotIn('id',[4,5])->get();
-        $cartridgeList = Cartridge::has('medias')
+        $brands = PrinterBrand::where('active',1)->get();
+
+        $cartridgeList = Cartridge::with('medias')
+            ->has('medias')
             ->whereNotNull(['buy_link'])
             ->limit(8)
             ->get();
@@ -30,7 +31,7 @@ class LandingController extends Controller
             ->limit(8)
             ->get();
 
-            return view('frontend.landing', compact('brands', 'cartridgeList', 'printerList'));
+        return view('frontend.landing', compact('brands', 'cartridgeList', 'printerList'));
     }
 
     public function familyList($slug) {
@@ -44,7 +45,7 @@ class LandingController extends Controller
     public function modelList(Request $request) {
         $family = $request->get('family');
         $brand = $request->get('brand');
-        
+
         if($family) {
             $models = PrinterModel::where('family_id', $family)->get();
         } else {
@@ -82,6 +83,7 @@ class LandingController extends Controller
 
         foreach ($images as $img){
             $img->size = \Storage::disk('public_uploads')->size($img->address);
+            $img->pure_address = $img->address;
             $img->address = asset('uploads/'.$img->address);
         }
 
@@ -95,6 +97,7 @@ class LandingController extends Controller
 
         foreach ($images as $img){
             $img->size = \Storage::disk('public_uploads')->size($img->address);
+            $img->pure_address = $img->address;
             $img->address = asset('uploads/'.$img->address);
         }
 

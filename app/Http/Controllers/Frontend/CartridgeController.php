@@ -47,7 +47,7 @@ class CartridgeController extends Controller
         
         $carts = $qq->paginate(12)->withQueryString();
 
-        $brands = PrinterBrand::all();
+        $brands = PrinterBrand::where('active', 1)->get();
 
 
         return view('frontend.cartridges', compact(

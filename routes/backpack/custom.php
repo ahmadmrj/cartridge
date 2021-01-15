@@ -18,6 +18,7 @@ Route::group([
 
     Route::post('cartridge/{id}/cart-media-upload', 'CartridgeCrudController@uploadMedia');
     Route::post('cartridge/{id}/cart-media-delete', 'CartridgeCrudController@RemoveMedia');
+    Route::post('cartridge/{id}/cart-media-default', 'CartridgeCrudController@DefaultMedia');
 
     Route::post('printermodel/{id}/printer-media-upload', 'PrinterModelCrudController@uploadMedia');
     Route::post('printermodel/{id}/printer-media-delete', 'PrinterModelCrudController@RemoveMedia');

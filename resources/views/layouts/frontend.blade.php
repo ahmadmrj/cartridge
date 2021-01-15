@@ -68,6 +68,37 @@
     <!-- cartridge Section-->
     @yield('cartridge-items')
 
+    <!-- customer add -->
+    <section class="page-section mb-0" id="customer-add">
+        <a href="" class="text-white" data-toggle="modal" data-target="#customerModal">
+            <div class="container rtl">
+                <h4 class="mb-2 text-center">کارتریج مورد نظرتان را پیدا نمی‌کنید؟</h4>
+                <p class="lead text-center"><i class="fas fa-chevron-circle-left"></i> مدل کارتریج را ثبت کنید، ما برای‌تان تهیه می‌کنیم.</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="customerModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close btn-sm" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body rtl">
+                    <label for="name">نام کارتریج را وارد کنید :</label>
+                    <div class="d-inline-flex w-100">
+                        <input class="mr-2 flex-grow-1" type="text" id="name">
+                        <button class="btn text-white bg-primary">ثبت</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- About Section-->
     <section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container rtl">

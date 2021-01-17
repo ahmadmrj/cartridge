@@ -114,23 +114,29 @@ class LandingController extends Controller
         $prntRes = [];
         if($term) {
             $cartRes = Cartridge::select(
-                    'id',
-                    \DB::raw('title AS text'),
+                    'cartridges.id',
+                    \DB::raw('CONCAT(printer_brands.title, " ", cartridges.title) AS text'),
                     \DB::raw('"cart" AS type'),
-                    'slug'
+                    'cartridges.slug'
                 )
-                ->where('slug', 'like', '%' . $term . '%')
+                ->join('printer_cartridge','printer_cartridge.cartridge_id', '=', 'cartridges.id')
+                ->join('printer_models','printer_models.id', '=', 'printer_cartridge.printer_id')
+                ->join('printer_families','printer_families.id', '=', 'printer_models.family_id')
+                ->join('printer_brands','printer_families.brand_id', '=', 'printer_brands.id')
+                ->where('cartridges.slug', 'like', '%' . $term . '%')
                 ->limit(15)
                 ->get()
                 ->all();
 
             $prntRes = PrinterModel::select(
-                    'id',
-                    \DB::raw('title AS text'),
+                    'printer_models.id',
+                    \DB::raw('CONCAT(printer_brands.title, " ", printer_models.title) AS text'),
                     \DB::raw('"printer" AS type'),
-                    'slug'
+                    'printer_models.slug'
                 )
-                ->where('slug', 'like', '%' . $term . '%')
+                ->join('printer_families','printer_families.id', '=', 'printer_models.family_id')
+                ->join('printer_brands','printer_families.brand_id', '=', 'printer_brands.id')
+                ->where('printer_models.slug', 'like', '%' . $term . '%')
                 ->limit(15)
                 ->get()
                 ->all();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Cartridge;
 use App\Models\CartridgeMedia;
+use App\Models\MissedCartridge;
 use App\Models\PrinterBrand;
 use App\Models\PrinterFamily;
 use App\Models\PrinterModel;
@@ -148,5 +149,16 @@ class LandingController extends Controller
         }
 
         return json_encode($mainRes);
+    }
+
+    public function missedCartridge(Request $request) {
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'phone_number' => 'numeric|digits_between:9,12'
+        ]);
+
+        MissedCartridge::create($validatedData);
+
+        return view('frontend.missed_cartridges');
     }
 }

@@ -22,4 +22,5 @@ Route::group([
 
     Route::post('printermodel/{id}/printer-media-upload', 'PrinterModelCrudController@uploadMedia');
     Route::post('printermodel/{id}/printer-media-delete', 'PrinterModelCrudController@RemoveMedia');
+    Route::crud('missed_cartridge', 'MissedCartridgeCrudController');
 }); // this should be the absolute last line of this file

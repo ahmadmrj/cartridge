@@ -28,6 +28,7 @@ Route::get('cartridge-list/{id}', 'Frontend\LandingController@cartridgeList');
 Route::get('cartridge-media-list/{id}', 'Frontend\LandingController@cartridgeMediaList');
 Route::get('printer-media-list/{id}', 'Frontend\LandingController@printerMediaList');
 Route::get('elastic', 'Frontend\LandingController@elastic');
+Route::post('missed-cartridge', 'Frontend\LandingController@missedCartridge');
 
 
 //Route::get('/carts', function () {

@@ -8,3 +8,5 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('printermodel') }}'><i class='nav-icon fa fa-question'></i> {{ trans('Printer Models') }}</a></li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('cartridge') }}'><i class='nav-icon fa fa-question'></i> {{ trans('Cartridges') }}</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('missed_cartridge') }}'><i class='nav-icon fa fa-question'></i> کارتریج پیشنهادی </a></li>

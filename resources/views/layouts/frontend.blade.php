@@ -68,7 +68,6 @@
     <!-- cartridge Section-->
     @yield('cartridge-items')
 
-    <!-- customer add -->
     <section class="page-section mb-0" id="customer-add">
         <a href="" class="text-white" data-toggle="modal" data-target="#customerModal">
             <div class="container rtl">
@@ -88,11 +87,27 @@
                     <button type="button" class="close btn-sm" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body rtl">
-                    <label for="name">نام کارتریج را وارد کنید :</label>
-                    <div class="d-inline-flex w-100">
-                        <input class="mr-2 flex-grow-1" type="text" id="name">
-                        <button class="btn text-white bg-primary">ثبت</button>
-                    </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="post" action="/missed-cartridge">
+                        @csrf
+                        <div class="form-group">
+                            <label for="title">نام کارتریج:</label>
+                            <input class="form-control" type="text" name="title" id="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">شماره تماس:</label>
+                            <input class="form-control" type="text" name="phone_number" id="phone" required>
+                        </div>
+                        <button class="btn btn-primary">ثبت</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -184,6 +199,9 @@
     @yield('next-scripts')
     <script>
         $(document).ready(function(){
+            @if($errors->any())
+                $('#customerModal').modal('show');
+            @endif
             $("#elastic-search-field").select2({
                 placeholder: '...نام کارتریج یا پرینتر را وارد کنید',
                 language: 'fa',

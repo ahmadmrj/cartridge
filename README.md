@@ -2,6 +2,7 @@
 ## About Cartdidgeyab
 
 It is a project is deployed on cartridgeyab.com and help people to find proper cartridge for their printer.
+It's now is live on cartridgeyab.com
 
 ## Based on Laravel
 

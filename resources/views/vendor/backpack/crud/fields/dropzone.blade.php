@@ -1,12 +1,10 @@
 <div class="form-group col-md-12">
-    <form method="post">
     <strong>{{ $field['label'] }}</strong> <br>
     <div class="dropzone sortable dz-clickable sortable">
         <div class="dz-message">
             Drop files here or click to upload.
         </div>
     </div>
-    </form>
 </div>
 
 @if ($crud->checkIfFieldIsFirstOfItsType($field, $fields))

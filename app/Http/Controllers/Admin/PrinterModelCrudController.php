@@ -92,7 +92,8 @@ class PrinterModelCrudController extends CrudController
             'filesize' => 1024,
             'reorder_route' => 'printer-media-reorder',
             'delete_route' => 'printer-media-delete',
-            'display_route' => 'printer-media-list'
+            'display_route' => 'printer-media-list',
+            'default_route' => 'printer-media-default',
         ]);
     }
 

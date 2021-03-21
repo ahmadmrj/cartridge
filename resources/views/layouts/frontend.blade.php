@@ -47,12 +47,12 @@
                 <img class="" width="40" src="{{ URL::asset('assets/img/tools-and-utensils.svg')}}" alt="" />
                 کارتریج یاب
             </a>
-            <div class="d-none d-md-flex col-md-6 align-content-center">
+            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="d-flex mt-3 mt-md-0 col-md-6 align-content-center">
                 <select id="elastic-search-field" class="form-control"></select>
             </div>
-            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                منو  <i class="fas fa-bars"></i>
-            </button>
             <div class="collapse navbar-collapse flex-grow-0" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/cartridges">کارتریج ها</a></li>
@@ -63,7 +63,9 @@
         </div>
     </nav>
     <!-- Masthead-->
-    @yield('master-head')
+    <div class="pt-5 pt-md-0">
+        @yield('master-head')
+    </div>
 
     <!-- cartridge Section-->
     @yield('cartridge-items')

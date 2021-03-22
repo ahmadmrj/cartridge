@@ -52,29 +52,7 @@
     <script>
         $(document).ready(function () {
             $('#printer-model').change(function () {
-                $.get('cartridge-list/'+$(this).val(), function (data) {
-                    let hbody = '';
-                    $.each(data, function (key, value) {
-                        hbody += '<div class="col-md-4 col-lg-3 mb-5">' +
-                            '            <div class="card h-100">' +
-                            '               <a href="/cartridge/' + value.slug + '">' +
-                            '                <div class="cartridge-item">' +
-                            '                    <div class="cartridge-item-caption d-flex align-items-center justify-content-center h-100 w-100">' +
-                            '                        <div class="cartridge-item-caption-content text-center text-white">' +
-                            '                            <i class="fas fa-eye fa-3x"></i>' +
-                            '                        </div>' +
-                            '                    </div>' +
-                            '                    <img class="img-fluid" src="'+value.picture+'" alt="" />' +
-                            '                    <h5>'+value.title+'</h5>' +
-                            '                </div>' +
-                            '            </div>' +
-                            '        </div>'
-                    });
-                    $("#cartridge-grid-items").html(hbody);
-                }, 'json');
-                $('html, body').animate({
-                    scrollTop: $("#cartridge").offset().top
-                }, 2000);
+                window.location.replace("/cartridges?printer=" + $(this).val());
             });
         });
     </script>

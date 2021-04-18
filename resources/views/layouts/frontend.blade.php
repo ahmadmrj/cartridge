@@ -63,7 +63,12 @@
         </div>
     </nav>
     <!-- Masthead-->
-    <div class="pt-5 pt-md-0">
+    @if(Request::is('/'))
+    <div id="top-banner">
+        <img class="img-fluid" src="{{ asset("images/banner_sprint.jpg") }}" />
+    </div>
+    @endif
+    <div>
         @yield('master-head')
     </div>
 
